@@ -1,0 +1,43 @@
+---
+layout: home
+---
+<div class="page-alternate">
+<div class="container-fp">
+    <!-- Title Page -->
+    <div id="blog" class="row">
+        <div class="span12">
+            <div class="title-page">
+                <h2 class="title">My Blog</h2>
+            </div>
+        </div>
+    </div>
+    <!-- End Title Page -->
+
+    <div class="row">
+
+{% for post in site.posts %}
+{% if post.content contains "<!-- more -->" %}
+<a href="{{ post.url }}">
+    <div class="span4 profile">
+        <div class="box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <line class="top" x1="0" y1="0" x2="1044" y2="0"/>
+              <line class="left" x1="0" y1="440" x2="0" y2="-1148"/>
+              <line class="bottom" x1="348" y1="440" x2="-696" y2="440"/>
+              <line class="right" x1="348" y1="0" x2="348" y2="1722"/>
+            </svg>
+          <div class="inner">
+                  <h4>{{ post.title }}</h4>
+                  {{ post.content | split:"<!-- more -->" | first % }}
+          </div>
+        </div><!-- End Box -->
+    </div></a><!-- End Profile -->
+
+      {% else %}
+        {{ post.content | strip_html | truncatewords:200 }}
+      {% endif %}
+    {% endfor %}
+
+    </div><!-- End Row -->
+    </div><!-- End Container -->
+</div><!-- End About -->

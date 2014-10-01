@@ -5,7 +5,7 @@ layout: post
 permalink: /things-a-designer-hates-hear/
 categories: Blog
 ---
-Ok, here is a list of things myself and my fellow designers hates to hear from our clients. I dub this post &#8220;Things a designer hates to hear&#8221;.
+Ok, here is a list of things myself and my fellow designers hates to hear from our clients. I dub this post &#8220;Things a designer hates to hear&#8221;.<!-- more -->
 
 [<img class="aligncenter size-full wp-image-2922" src="http://i2.wp.com/www.agustealo.com/wp-content/uploads/2014/07/THINGS-A-DESIGNER-HATES-TO-HEAR.jpg?fit=640%2C640" alt="THINGS A DESIGNER HATES TO HEAR Things a designer hates to hear" title="Things a designer hates to hear" data-recalc-dims="1" />][1]
 

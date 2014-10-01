@@ -1,5 +1,5 @@
 ---
-title: Self Marketing For Freelance Designers
+title: 'Self Marketing For Freelance Designers'
 author: agustealo
 layout: post
 permalink: /self-marketing-for-freelance-designers/

@@ -5,13 +5,14 @@ layout: post
 permalink: /self-marketing-for-freelance-designers/
 categories: Blog
 ---
-<p>Self-marketing for freelance designers is very important. Although you might undoubtedly be great at what you do, in the freelance business, skills is not enough. Competing in today&#8217;s economy can be rough, it almost seems like they&#8217;re 100 designers for every 1 client willing to hire.</p><!--more-->
+<p class="profile-description"> Self-marketing for freelance designers is very important. Although you might undoubtedly be great at what you do, in the freelance business, skills is not enough. Competing in today's economy can be rough, it almost seems like they're 100 designers for every 1 client willing to hire.</p>
+<!-- more -->
 
-<p>Instead of competing by show casing talent, the key to surviving in this market is not necessarily who has the better skills but who has done the better marketing. As a freelance designer you are not just the talent, you are the company. Very often you&#8217;re in charge of every detail of your business, since you&#8217;re the company you need to learn to wear many hats; boss, secretary, talent, and marketing manager. Marketing can seem intimidating, and tedious, but it is very viable to the success of your business.</p>
+<p>Instead of competing by show casing talent, the key to surviving in this market is not necessarily who has the better skills but who has done the better marketing. As a freelance designer you are not just the talent, you are the company. Very often you're in charge of every detail of your business, since you're the company you need to learn to wear many hats; boss, secretary, talent, and marketing manager. Marketing can seem intimidating, and tedious, but it is very viable to the success of your business.</p>
 
 <p>Most of us as designers want to just concentrate on designing, but those of us who do should consider working for a company full time. For the rest of us who wants the reward of being self-employed should understand this demands hard work and dedication.</p>
 
-<p>If you&#8217;re not willing to be persistent, and consistent, you have already failed. Self-marketing for freelance designers is a task that needs to be performed daily. Although there is no easy way out, thanks to the internet much of these task has become simplified. In this article I will list a few tips to assist in this intricate area of the business.</p>
+<p>If you're not willing to be persistent, and consistent, you have already failed. Self-marketing for freelance designers is a task that needs to be performed daily. Although there is no easy way out, thanks to the internet much of these task has become simplified. In this article I will list a few tips to assist in this intricate area of the business.</p>
 
 &nbsp;
 
@@ -32,7 +33,7 @@ Posting links
 </p>
 
 <p style="padding-left: 30px;">
-  This will engage your social audience, and in return if your audience likes your post they will re-post/re-tweet it. This is good for when you&#8217;re ready to post relevant info of your own to drive people to your site. The idea is to gain your social audience by providing relevant content but not to seem like a spammer by posting only links to your site.
+  This will engage your social audience, and in return if your audience likes your post they will re-post/re-tweet it. This is good for when you're ready to post relevant info of your own to drive people to your site. The idea is to gain your social audience by providing relevant content but not to seem like a spammer by posting only links to your site.
 </p>
 
 <p style="padding-left: 30px;">
@@ -106,7 +107,7 @@ Nothing beats getting something awesome for free, an easy way to lure fans/and p
 </p>
 
 <p style="padding-left: 30px;">
-  Free consulting give potential customers 30-60 minutes of your time for free. Try not to push a sale on them, just give them your expert assessment feedback, whatever. Leave them with your business card and notes from the conversation on a letterhead with your business info, and be on your way. This will show the client what you&#8217;re capable of doing for them, making them so happy they didn&#8217;t even have to pay for the excellent consulting they feel almost obligated to hire you as a way to pay you back for your time you gave them.
+  Free consulting give potential customers 30-60 minutes of your time for free. Try not to push a sale on them, just give them your expert assessment feedback, whatever. Leave them with your business card and notes from the conversation on a letterhead with your business info, and be on your way. This will show the client what you're capable of doing for them, making them so happy they didn&#8217;t even have to pay for the excellent consulting they feel almost obligated to hire you as a way to pay you back for your time you gave them.
 </p>
 
 <p style="padding-left: 30px;">
@@ -120,7 +121,7 @@ Nothing beats getting something awesome for free, an easy way to lure fans/and p
 ###  Mobile Advertising
 
 <p style="padding-left: 30px;">
-  Place your advertising vinyl on your car, after all you&#8217;re a designer. What better way to show your skills than designing an awesome looking advertising design for your business, and at the same time show potential clients what you&#8217;re capable of. Not only is this inexpensive, but you get to advertise wherever you go. You&#8217;ll be surprise on just how many potential clients you&#8217;ll get just approaching you with questions about their projects.
+  Place your advertising vinyl on your car, after all you're a designer. What better way to show your skills than designing an awesome looking advertising design for your business, and at the same time show potential clients what you're capable of. Not only is this inexpensive, but you get to advertise wherever you go. You&#8217;ll be surprise on just how many potential clients you&#8217;ll get just approaching you with questions about their projects.
 </p>
 
 &nbsp;
@@ -129,10 +130,10 @@ Nothing beats getting something awesome for free, an easy way to lure fans/and p
 
 &nbsp;
 
-### Making Sure You&#8217;re Worth It
+### Making Sure you're Worth It
 
 <p style="padding-left: 30px;">
-   You want to make sure the clients sees your services as valuable as what you&#8217;re willing to charge&#8230; you wouldn&#8217;t spend on a Toyota what you would on a Jaguar, right? So here are some check list on making sure you come across to your client as a Jaguar not a Toyota.
+   You want to make sure the clients sees your services as valuable as what you're willing to charge&#8230; you wouldn&#8217;t spend on a Toyota what you would on a Jaguar, right? So here are some check list on making sure you come across to your client as a Jaguar not a Toyota.
 </p>
 
 <p style="padding-left: 30px;">

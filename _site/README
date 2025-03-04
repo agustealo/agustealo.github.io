@@ -1,0 +1,102 @@
+# Jekyll Twilight
+
+Jekyll Twilight is a responsive, one‑page Jekyll theme designed for portfolios, blogs, and creative professionals. It combines modern design with elegant animations and smooth interactions to showcase your work in style.
+
+## Features
+
+- **Responsive Design:** Fluid layouts and flexible grids for all screen sizes.
+- **Portfolio Filtering:** Easily filter projects by category using JavaScript and CSS.
+- **Animated SVG Icons:** Customizable social icons with hover effects.
+- **Modal Windows & Sliders:** Built‑in modal effects and a fullscreen slider for featured content.
+- **Clean Markup:** Based on Jekyll’s best practices, with modular includes and layouts.
+- **Lightweight & Fast:** Optimized for performance with minimal external dependencies.
+- **Accessible:** Designed with accessibility in mind (ARIA attributes and proper focus handling).
+
+## Demo
+
+Visit the live demo: [agustealo.github.io](https://agustealo.github.io)
+
+## Installation
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/Agustealo/Jekyll-Twilight.git
+   cd Jekyll-Twilight
+Install Dependencies:
+
+Make sure you have Ruby and Bundler installed. Then run:
+
+bash
+Copy
+bundle install
+Run the Jekyll Server:
+
+Start the server to preview your theme:
+
+bash
+Copy
+bundle exec jekyll serve
+Open your browser at http://localhost:4000.
+
+## Folder Structure
+Below is an overview of the main folders and files in the theme:
+
+📦 Jekyll Twilight
+ ┣ 📂 _includes
+ ┃ ┣ 📂 components
+ ┃ ┣ 📂 home
+ ┃ ┣ 📜 footer.html
+ ┃ ┣ 📜 header.html
+ ┃ ┣ 📜 navigation.html
+ ┃ ┗ 📜 widget.html
+ ┣ 📂 _layouts
+ ┃ ┣ 📜 default.html
+ ┃ ┣ 📜 home.html
+ ┃ ┣ 📜 page.html
+ ┃ ┗ 📜 post.html
+ ┣ 📂 _posts
+ ┣ 📂 _site
+ ┣ 📂 css
+ ┣ 📂 images
+ ┣ 📂 js
+ ┣ 📜 Gemfile
+ ┣ 📜 Gemfile.lock
+ ┣ 📜 _config.yml
+ ┣ 📜 config.rb
+ ┣ 📜 feed.xml
+ ┗ 📜 index.html
+
+## Customization
+### Styling:
+Customize styles by editing css/JekyllTwilight.css. The theme uses CSS custom properties for easy adjustments.
+
+### Social Icons:
+Social icons are provided as SVGs (found in images/social/). You can update the colors and hover effects in the CSS.
+
+### Includes and Layouts:
+The theme’s structure is modular. Update or create new includes in _includes/ and layouts in _layouts/ to suit your content needs.
+
+### Portfolio Filtering:
+Portfolio items are filtered via JavaScript in JekyllTwilight.js. Ensure each project item in your portfolio has a class (e.g., wordpress, snippets, video) and a corresponding data-categories attribute for filtering.
+
+## Usage
+### Update Content:
+
+Create new blog posts in _posts/.
+Modify pages using the layouts provided in _layouts/.
+Deploy:
+After testing locally with jekyll serve, deploy your site to GitHub Pages by pushing the repository to your GitHub account. The theme is optimized for GitHub Pages.
+
+## Contributing
+Contributions are welcome! Please fork the repository and submit pull requests with improvements or bug fixes. Make sure to follow the code style and include tests where applicable.
+
+## License
+This theme is open source and available under the MIT License.
+
+## Credits
+Design & Development: Agustealo Johnson @ agustealo.com
+
+Inspired by: Various creative themes and modern web standards
+
+Built with: Jekyll, HTML5, CSS3, and JavaScript

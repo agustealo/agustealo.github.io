@@ -5,13 +5,13 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 03 Mar 2025 18:18:36 -0800</pubDate>
-    <lastBuildDate>Mon, 03 Mar 2025 18:18:36 -0800</lastBuildDate>
+    <pubDate>Sun, 09 Mar 2025 15:05:04 -0700</pubDate>
+    <lastBuildDate>Sun, 09 Mar 2025 15:05:04 -0700</lastBuildDate>
     <generator>Jekyll v4.4.1</generator>
     
       <item>
         <title>Self Marketing For Freelance Designers</title>
-        <description>&lt;p class=&quot;profile-description&quot;&gt; Self-marketing for freelance designers is very important. Although you might undoubtedly be great at what you do, in the freelance business, skills is not enough. Competing in today&apos;s economy can be rough, it almost seems like they&apos;re 100 designers for every 1 client willing to hire.&lt;/p&gt;
+        <description>&lt;p class=&quot;widget-description&quot;&gt; Self-marketing for freelance designers is very important. Although you might undoubtedly be great at what you do, in the freelance business, skills is not enough. Competing in today&apos;s economy can be rough, it almost seems like they&apos;re 100 designers for every 1 client willing to hire.&lt;/p&gt;
 &lt;!-- more --&gt;
 
 &lt;p&gt;Instead of competing by show casing talent, the key to surviving in this market is not necessarily who has the better skills but who has done the better marketing. As a freelance designer you are not just the talent, you are the company. Very often you&apos;re in charge of every detail of your business, since you&apos;re the company you need to learn to wear many hats; boss, secretary, talent, and marketing manager. Marketing can seem intimidating, and tedious, but it is very viable to the success of your business.&lt;/p&gt;
@@ -239,7 +239,7 @@
     
       <item>
         <title>CSS Size Properties</title>
-        <description>&lt;p class=&quot;profile-description&quot;&gt; I was asked a question today by a friend who is learning web design. She wanted to know the difference between CSS size properties and methods, why use PX vs PT for fonts, or 100% vs EM. I would like to start by saying I&amp;#8217;m not an expert on the matter but I will try to explain as best as I understand without a over complicated explanation.&lt;/p&gt;
+        <description>&lt;p class=&quot;widget-description&quot;&gt; I was asked a question today by a friend who is learning web design. She wanted to know the difference between CSS size properties and methods, why use PX vs PT for fonts, or 100% vs EM. I would like to start by saying I&amp;#8217;m not an expert on the matter but I will try to explain as best as I understand without a over complicated explanation.&lt;/p&gt;
 &lt;!-- more --&gt;
 
 &lt;p&gt;Let&amp;#8217;s take a look at the conversion chart below to see how these different units relates to each other.&lt;/p&gt;

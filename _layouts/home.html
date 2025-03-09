@@ -1,25 +1,19 @@
-
 {% include head.html %}
 <!-- Header -->
-<div class="container">
-{% include header.html %}
-{% include navigation.html %}
-<!-- End Header -->
+<div class="container-fluid container-no-padding"> <!-- Updated to use .container -->
+    {% include header.html %}
+    {% include navigation.html %}
+    <!-- End Header -->
 
-<!-- Our Work Section -->
-{% include home/our-work.html %}
-<!-- End Our Work Section -->
+    <!-- Our Work Section -->
+    {% include home/our-work.html %}
+    <!-- End Our Work Section -->
 
-<!-- About Section -->
-{{ content }}
-<!-- End About Section -->
-
-
-<!-- Socialize -->
-{% include home/social-links.html %}
-<!-- End Socialize -->
+    <!-- About Section -->
+    {{ content }}
+    <!-- End About Section -->
+</div>
 
 <!-- Footer -->
-</div>
 {% include footer.html %}
 <!-- End Footer -->

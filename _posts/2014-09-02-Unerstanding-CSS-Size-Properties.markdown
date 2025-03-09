@@ -5,7 +5,7 @@ layout: post
 permalink: /understanding-css-size-properties/
 categories: Blog
 ---
-<p class="profile-description"> I was asked a question today by a friend who is learning web design. She wanted to know the difference between CSS size properties and methods, why use PX vs PT for fonts, or 100% vs EM. I would like to start by saying I&#8217;m not an expert on the matter but I will try to explain as best as I understand without a over complicated explanation.</p><!-- more -->
+<p class="widget-description"> I was asked a question today by a friend who is learning web design. She wanted to know the difference between CSS size properties and methods, why use PX vs PT for fonts, or 100% vs EM. I would like to start by saying I&#8217;m not an expert on the matter but I will try to explain as best as I understand without a over complicated explanation.</p><!-- more -->
 
 <p>Let&#8217;s take a look at the conversion chart below to see how these different units relates to each other.</p>
 

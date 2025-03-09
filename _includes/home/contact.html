@@ -5,36 +5,42 @@
       <h2>Get in Touch</h2>
       <p>We’re currently accepting new client projects. We look forward to serving you.</p>
     </div>
-    <div class="contact-content">
-      <form id="contact-form" class="contact-form" action="#" method="post">
-        <label for="contact_name" class="screen-reader-text">Full Name</label>
-        <input id="contact_name" type="text" placeholder="Full Name" required name="name" />
+    <div class="row gap-4"> <!-- Added row and gap utility -->
+      <!-- Contact Form -->
+      <div class="col-md-6"> <!-- Added grid column class -->
+        <form id="contact-form" class="contact-form" action="#" method="post">
+          <label for="contact_name" class="screen-reader-text">Full Name</label>
+          <input id="contact_name" type="text" placeholder="Full Name" required name="name" />
 
-        <label for="contact_email" class="screen-reader-text">Email Address</label>
-        <input id="contact_email" type="email" placeholder="Email Address" required name="email" />
+          <label for="contact_email" class="screen-reader-text">Email Address</label>
+          <input id="contact_email" type="email" placeholder="Email Address" required name="email" />
 
-        <label for="contact_message" class="screen-reader-text">Your Message</label>
-        <textarea id="contact_message" placeholder="Your Message" name="message" rows="15" cols="40" required></textarea>
+          <label for="contact_message" class="screen-reader-text">Your Message</label>
+          <textarea id="contact_message" placeholder="Your Message" name="message" rows="15" cols="40" required></textarea>
 
-        <button id="contact-submit" type="submit">Send Your Email</button>
+          <button id="contact-submit" type="submit">Send Your Email</button>
 
-        <div id="response"></div>
-      </form>
+          <div id="response"></div>
+        </form>
+      </div>
 
-      <aside class="contact-details">
-        <h3>Contact Details</h3>
-        <ul>
-          <li><a href="mailto:hello@agustealo.com.com">hello@agustealo.com.com</a></li>
-          <li>(916) 375-2525</li>
-          <li>
-            Jekyll Twilight Studio
-            <br />
-            5240 Vanish Island. 105
-            <br />
-            Unknow
-          </li>
-        </ul>
-      </aside>
+      <!-- Contact Details -->
+      <div class="col-md-6"> <!-- Added grid column class -->
+        <aside class="contact-details">
+          <h3>Contact Details</h3>
+          <ul>
+            <li><a href="mailto:hello@agustealo.com.com">hello@agustealo.com.com</a></li>
+            <li>(916) 375-2525</li>
+            <li>
+              Jekyll Twilight Studio
+              <br />
+              5240 Vanish Island. 105
+              <br />
+              Unknow
+            </li>
+          </ul>
+        </aside>
+      </div>
     </div>
-    </div>
+  </div>
 </section>

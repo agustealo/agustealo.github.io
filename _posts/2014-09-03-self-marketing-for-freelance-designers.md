@@ -5,7 +5,7 @@ layout: post
 permalink: /self-marketing-for-freelance-designers/
 categories: Blog
 ---
-<p class="profile-description"> Self-marketing for freelance designers is very important. Although you might undoubtedly be great at what you do, in the freelance business, skills is not enough. Competing in today's economy can be rough, it almost seems like they're 100 designers for every 1 client willing to hire.</p>
+<p class="widget-description"> Self-marketing for freelance designers is very important. Although you might undoubtedly be great at what you do, in the freelance business, skills is not enough. Competing in today's economy can be rough, it almost seems like they're 100 designers for every 1 client willing to hire.</p>
 <!-- more -->
 
 <p>Instead of competing by show casing talent, the key to surviving in this market is not necessarily who has the better skills but who has done the better marketing. As a freelance designer you are not just the talent, you are the company. Very often you're in charge of every detail of your business, since you're the company you need to learn to wear many hats; boss, secretary, talent, and marketing manager. Marketing can seem intimidating, and tedious, but it is very viable to the success of your business.</p>

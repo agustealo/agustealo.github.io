@@ -1,29 +1,42 @@
-<div class="widget">
+<div class="widget portfolio-card">
 	<div class="wrapper">
-		<div class="profile-cv">
-			<div class="profile-top">
-				<div class="profile-img">
-					<img src="images/profile.jpg" alt="agustealo johnson">
-				</div>
-				<h2>AGUSTEALO<br />JOHNSON</h2>
-				<p>"Leprechauns aren't real but the gold they leave behind are. Find your dream at the end of that rainbow and make it reality."<br />
-				Web site: <a href="http:www.agustealo.com">www.agustealo.com</a>
-				</p>
+	  <div class="row">
+		<!-- Profile Section -->
+		<div class="col-md-5">
+		  <div class="profile-section">
+			<div class="profile-image">
+			  <img src="images/profile.jpg" alt="Agustealo Johnson" class="profile-img" />
 			</div>
-			<div class="profile-bttm">
-	         {% include home/social.html %}
+			<div class="profile-content">
+			  <h2 class="profile-name">Agustealo Johnson</h2>
+			  <p class="profile-tagline">
+				"Leprechauns aren't real, but the gold they leave behind is. Find your dream at the end of that rainbow and make it a reality."
+			  </p>
+			  <p class="profile-website">
+				Website: <a href="http://www.agustealo.com" target="_blank" rel="noopener">www.agustealo.com</a>
+			  </p>
+			  <div class="social-links">
+				{% include home/social.html %}
+			  </div>
 			</div>
+		  </div>
 		</div>
-		<div class="web-container">
-			<div class="web-intro">
-			<h1>Front End Developer | Designer</h1>
-			<p>I'm a seasoned digital designer and have transitioned into programing and development. I try to introduce the same creativity and functionality I acquired from my design background and apply the same discipline in my development.</p>
-
-			<p>When designing or developing I include the latest in what’s trending in design, technology and web standards. Ensuring Speed, Flexibility, Expandability, Compatibility, and Compliance with Css / Html, Mobile Websites, also CMS & E-Commerce Integration. Offering a wide range of powerful multi-platform mobile solutions.</p>
-
-			<p><i>-I design websites with usability and communication in mind.</i>
+  
+		<!-- Web Intro Section -->
+		<div class="col-md-7">
+		  <div class="web-intro-section">
+			<h1 class="intro-title">Front-End Developer | Designer</h1>
+			<p class="intro-description">
+			  I’m a seasoned digital designer who has transitioned into programming and development. I bring creativity, functionality, and discipline from my design background into every project I work on.
 			</p>
-			</div>
+			<p class="intro-description">
+			  My work incorporates the latest trends in design, technology, and web standards. I prioritize <strong>speed</strong>, <strong>flexibility</strong>, <strong>expandability</strong>, and <strong>compatibility</strong> in every solution I deliver. Whether it’s mobile websites, CMS integrations, or e-commerce platforms, I ensure a seamless user experience across all devices.
+			</p>
+			<p class="intro-quote">
+			  <em>"I design websites with usability and communication at their core."</em>
+			</p>
+		  </div>
 		</div>
+	  </div>
 	</div>
-</div>
+  </div>

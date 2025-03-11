@@ -1,0 +1,115 @@
+// ====================================================================
+// _grid.scss
+// Fluid-First Grid System using Sass loops and CSS custom properties
+// ====================================================================
+
+// Optionally, import our variables and mixins (if not already imported in our theme.scss)
+// @import "base/variables";
+// @import "base/mixins";
+
+// --------------------------------------------------------------------
+// Base Row & Column Styles
+// --------------------------------------------------------------------
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    /* Negative margins to offset the column gutters */
+    margin-left: calc(-1 * var(--grid-gap));
+    margin-right: calc(-1 * var(--grid-gap));
+  }
+  
+  [class^="col-"] {
+    /* Let columns grow if needed, but default to full width */
+    flex: 1 0 0%;
+    min-width: 0;
+    padding-left: var(--grid-gap);
+    padding-right: var(--grid-gap);
+    width: 100%;
+  }
+  
+  // --------------------------------------------------------------------
+  // Generate Column Classes (1 to 12)
+  // --------------------------------------------------------------------
+  @for $i from 1 through 12 {
+    .col-#{$i} {
+      flex-basis: calc(100% / var(--grid-columns) * #{$i});
+      max-width: calc(100% / var(--grid-columns) * #{$i});
+    }
+  }
+  
+  // Auto Layout Column (content-based width)
+  .col-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+  
+  // --------------------------------------------------------------------
+  // Responsive Column Classes
+  // We use media queries with our CSS custom properties for breakpoints.
+  // --------------------------------------------------------------------
+  
+  @media (min-width: var(--breakpoint-sm)) {
+    @for $i from 1 through 12 {
+      .col-sm-#{$i} {
+        flex-basis: calc(100% / var(--grid-columns) * #{$i});
+        max-width: calc(100% / var(--grid-columns) * #{$i});
+      }
+    }
+    .col-sm-auto {
+      flex: 0 0 auto;
+      width: auto;
+    }
+  }
+  
+  @media (min-width: var(--breakpoint-md)) {
+    @for $i from 1 through 12 {
+      .col-md-#{$i} {
+        flex-basis: calc(100% / var(--grid-columns) * #{$i});
+        max-width: calc(100% / var(--grid-columns) * #{$i});
+      }
+    }
+    .col-md-auto {
+      flex: 0 0 auto;
+      width: auto;
+    }
+  }
+  
+  @media (min-width: var(--breakpoint-lg)) {
+    @for $i from 1 through 12 {
+      .col-lg-#{$i} {
+        flex-basis: calc(100% / var(--grid-columns) * #{$i});
+        max-width: calc(100% / var(--grid-columns) * #{$i});
+      }
+    }
+    .col-lg-auto {
+      flex: 0 0 auto;
+      width: auto;
+    }
+  }
+  
+  @media (min-width: var(--breakpoint-xl)) {
+    @for $i from 1 through 12 {
+      .col-xl-#{$i} {
+        flex-basis: calc(100% / var(--grid-columns) * #{$i});
+        max-width: calc(100% / var(--grid-columns) * #{$i});
+      }
+    }
+    .col-xl-auto {
+      flex: 0 0 auto;
+      width: auto;
+    }
+  }
+  
+  @media (min-width: var(--breakpoint-xxl)) {
+    @for $i from 1 through 12 {
+      .col-xxl-#{$i} {
+        flex-basis: calc(100% / var(--grid-columns) * #{$i});
+        max-width: calc(100% / var(--grid-columns) * #{$i});
+      }
+    }
+    .col-xxl-auto {
+      flex: 0 0 auto;
+      width: auto;
+    }
+  }
+  

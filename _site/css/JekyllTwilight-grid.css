@@ -240,7 +240,7 @@ body {
 .py-3  { padding-top: 1rem !important; padding-bottom: 1rem !important; }
 .py-4  { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
 .py-5  { padding-top: 2rem !important; padding-bottom: 2rem !important; }
-.py-gap  { padding-top: 2rem !important; padding-bottom:10rem !important; }
+.py-gap  { padding-top: 5rem !important; padding-bottom:5rem !important; }
 
 /* Horizontal Padding */
 .px-0  { padding-left: 0 !important; padding-right: 0 !important; }
@@ -249,7 +249,7 @@ body {
 .px-3  { padding-left: 1rem !important; padding-right: 1rem !important; }
 .px-4  { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
 .px-5  { padding-left: 2rem !important; padding-right: 2rem !important; }
-.px-gap  { padding-left: 2rem !important; padding-right: 10rem !important; }
+.px-gap  { padding-left: 5rem !important; padding-right: 5rem !important; }
 
 .m-auto {
   margin: auto;

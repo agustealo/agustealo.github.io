@@ -1,13 +1,4 @@
 @import url('JekyllTwilight-grid.css');
-/* Reset and Clearfix */
-.clear-fix,
-*,
-*:before,
-*:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 .item-thumbs img,
 .item-thumbs a + img{
@@ -252,11 +243,8 @@ nav#menu #menu-nav li a:hover {
 
 /* --- Section Page --- */
 
-.page-alternate {
+.fp-blog-section {
   background: #2F3238;
-  padding: 100px 0;
-  position: relative;
-  z-index: 10;
 }
 
 .title-page {
@@ -419,20 +407,8 @@ footer .credits {
 }
 
 #back-to-top i {
-  font-size: 16px;
-  color: #fff;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-top: -7px;
-  line-height: 1em;
-  margin-right: 1em;
+  width: 35px;
+  height: 35px;
+  display: block;
+  margin: 10px auto;
 }
-
-#back-to-top i {
-  margin-left: -40%;
-  margin-top: -40%;
-  width: 40px;
-  height: 40px;
-}
-

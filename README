@@ -1,160 +1,142 @@
+Jekyll Twilight
 
 
-# Jekyll Twilight
 
-**Jekyll Twilight** is a beautiful, clean, and modern Jekyll theme designed to showcase portfolios, blogs, and personal websites. With its minimalist design, integrated social media features, and flexible layout options, this theme is perfect for developers, designers, and content creators who want a polished and professional online presence.
 
-## Table of Contents
+Jekyll Twilight is a sleek, minimalist Jekyll theme designed to elevate your portfolio, blog, or personal website. With a focus on clean aesthetics and user experience, it provides a professional and polished online presence.
 
-- [Introduction](#introduction)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Customization](#customization)
-- [Structure](#structure)
-- [License](#license)
-- [Credits](#credits)
-- [Contact](#contact)
+Live Demo | Installation | Configuration | Customization
 
-## Introduction
+✨ What is Jekyll Twilight?
 
-Jekyll Twilight is built with simplicity and beauty in mind, providing a comfortable experience both for users and developers. It includes features such as responsive design, social media integration, and customizable widgets. The theme is forked from [Jekyll Now](https://github.com/barryclark/jekyll-now) and enhanced with additional features.
+Jekyll Twilight is a minimalist Jekyll theme perfect for creating modern, elegant websites with ease. Whether you're building a portfolio, blog, or personal website, this theme delivers a polished, distraction-free experience.
 
-## Installation
+🛠️ Features
 
-### Prerequisites
+Minimalist Design: Clean and modern interface for a distraction-free experience.
 
-Ensure you have the following installed on your computer:
+Responsive Layout: Optimized for all devices, ensuring a seamless user experience.
 
-- **Ruby** (version 2.5.0 or higher)
-- **RubyGems**
-- **Bundler**
-- **Jekyll** (version 4.0.0 or higher)
+Social Media Integration: Easily connect your social profiles with a built-in widget.
 
-### Steps
+Customizable Widgets: Tailor the sidebar to match your content.
 
-1. Clone the repository:
+SEO Optimized: Built with best practices for better search engine visibility.
 
-   ```bash
-   git clone https://github.com/agustealo/jekyll-twilight.git
-   ```
+Easy Installation: Get your site up and running in minutes.
 
-2. Navigate into the project directory:
+Flexible Configuration: Customize the theme to match your brand.
 
-   ```bash
-   cd jekyll-twilight
-   ```
+Comprehensive Documentation: Detailed instructions for installation and customization.
 
-3. Install the required dependencies:
+📦 Quick Start
 
-   ```bash
-   bundle install
-   ```
+Clone the Repository
 
-4. Start the Jekyll server to view your site locally:
+git clone https://github.com/agustealo/jekyll-twilight.git
+cd jekyll-twilight
 
-   ```bash
-   bundle exec jekyll serve
-   ```
+Install Dependencies
 
-   Your site should be available at [http://localhost:4000](http://localhost:4000).
+bundle install
 
-## Configuration
+Start the Jekyll Server
 
-You can customize the theme's settings by modifying the `_config.yml` file.
+bundle exec jekyll serve
 
-### Key Configuration Options
+Your site will be available at http://localhost:4000.
 
-- **Site Name**: Update `title` and `description` to reflect your website's name and purpose.
-- **Social Links**: Add or modify social media platforms in the `social_links` section.
-- **Base URL**: If your site is hosted in a subdirectory (e.g., `https://example.com/blog`), set `baseurl: "/blog"`.
+🎮 Configuration
 
-Example `_config.yml` snippet:
+Customize your site by editing the _config.yml file. Here are some key options:
 
-```yaml
-title: Jekyll Twilight
-description: A beautiful Jekyll theme
+title: Your Site Title
+description: Your Site Description
+author: Your Name
+email: your.email@example.com
+baseurl: "" # If your site is hosted in a subdirectory, set this to the subdirectory path
+url: "https://yourdomain.com" # Your site's domain
 social_links:
- github: 'https://github.com/username'
- linkedin: 'https://linkedin.com/in/username'
-```
+  github: "yourusername"
+  linkedin: "yourusername"
+  twitter: "yourusername"
+  # Add more social links as needed
 
-## Customization
+🎯 Customization
 
-The theme offers several customization options to tailor it to your needs.
+Layouts
 
-### Layouts
+_layouts/home.html: Homepage layout.
 
-- **Home Layout** (`_layouts/home.html`): Configures the homepage design and structure.
-- **Post Layout** (`_layouts/post.html`): Manages how blog posts are displayed.
-- **Page Layout** (`_layouts/page.html`): Handles static pages like About or Contact.
+_layouts/post.html: Post layout.
 
-### Includes
+_layouts/page.html: Page layout.
 
-- **Header**: `_includes/header.html` - Customize your site's header.
-- **Footer**: `_includes/footer.html` - Modify the footer content.
-- **Social Links**: `_includes/social-links.html` - Adjust your social media icons.
-- **Widgets**: `_includes/widget.html` - Configure any sidebar widgets.
+Includes
 
-### Customizing Styles
+_includes/header.html: Header section.
 
-The theme's CSS is found in `assets/css/JekyllTwilight.css`. You can change colors, fonts, and layouts by modifying this file.
+_includes/footer.html: Footer section.
 
-#### Example: Changing the Color Scheme
+_includes/social-links.html: Social media links.
 
-To change the primary color, find and update the relevant CSS variable:
+_includes/widget.html: Sidebar widgets.
 
-```css
+Styles
+
+Modify assets/css/JekyllTwilight.css to change the theme's appearance. Example:
+
 :root {
-  --primary-color: #3498db;
+  --primary-color: #3498db; /* Change this to your preferred color */
 }
-```
 
-## Structure
+📁 Project Structure
 
-Here's an overview of the theme's file structure:
+jekyll-twilight/
+├── _includes/
+│   ├── components/
+│   ├── footer.html
+│   ├── header.html
+│   ├── navigation.html
+│   └── widget.html
+├── _layouts/
+│   ├── default.html
+│   ├── home.html
+│   ├── page.html
+│   └── post.html
+├── _posts/
+├── _site/
+├── assets/
+│   ├── css/
+│   └── js/
+├── images/
+├── Gemfile
+├── Gemfile.lock
+├── _config.yml
+├── config.rb
+├── feed.xml
+└── index.html
 
-```
-📦 Jekyll Twilight
- ┣ 📂 _includes
- ┃ ┣ 📂 components
- ┃ ┣ 📜 footer.html
- ┃ ┣ 📜 header.html
- ┃ ┣ 📜 navigation.html
- ┃ ┗ 📜 widget.html
- ┣ 📂 _layouts
- ┃ ┣ 📜 default.html
- ┃ ┣ 📜 home.html
- ┃ ┣ 📜 page.html
- ┃ ┗ 📜 post.html
- ┣ 📂 _posts
- ┣ 📂 _site
- ┣ 📂 assets
- ┃ ┣ 📂 css
- ┃ ┗ 📂 js
- ┣ 📂 images
- ┣ 📜 Gemfile
- ┣ 📜 Gemfile.lock
- ┣ 📜 _config.yml
- ┣ 📜 config.rb
- ┣ 📜 feed.xml
- ┗ 📜 index.html
-```
+📜 License
 
-### Key Directories:
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-- **_includes**: Reusable components like header and footer.
-- **_layouts**: Templates for different page types.
-- **_posts**: Directory for blog posts.
-- **assets**: CSS and JavaScript files for the theme.
-- **images**: Folder for all images used on your site.
+✍️ Credits
 
-## License
+Design & Development: Agustealo Johnson
 
-The Jekyll Twilight theme is released under the [MIT License](LICENSE). Feel free to use, modify, and distribute it as needed.
+Inspired by: Various modern web standards and design principles
 
-## Credits
-Design & Development: Agustealo Johnson @ agustealo.com
+Built with: Jekyll, HTML5, CSS3, JavaScript
 
-Inspired by: Various creative themes and modern web standards
+🤝 Contributing
 
-Built with: Jekyll, HTML5, CSS3, and JavaScript
+Contributions are welcome! Feel free to submit a pull request or open an issue.
+
+📧 Contact
+
+For questions or support, please contact Agustealo Johnson.
+
+🌟 Want to see it in action?
+
+Check out the Live Demo!

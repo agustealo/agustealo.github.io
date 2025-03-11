@@ -153,14 +153,8 @@ Here's an overview of the theme's file structure:
 The Jekyll Twilight theme is released under the [MIT License](LICENSE). Feel free to use, modify, and distribute it as needed.
 
 ## Credits
+Design & Development: Agustealo Johnson @ agustealo.com
 
-This theme is forked from [Jekyll Now](https://github.com/barryclark/jekyll-now) and has been enhanced with additional features. Special thanks to the original creator for providing a solid foundation.
+Inspired by: Various creative themes and modern web standards
 
-## Contact
-
-For any questions, feedback, or support, please:
-
-- [Open an issue](https://github.com/agustealo/jekyll-twilight/issues) on GitHub.
-- Visit the [contact page](https://agustealo.github.io/contact) on the live demo.
-
-Thank you for choosing Jekyll Twilight!
+Built with: Jekyll, HTML5, CSS3, and JavaScript

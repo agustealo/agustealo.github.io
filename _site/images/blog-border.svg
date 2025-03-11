@@ -1,6 +1,0 @@
-            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-              <line class="top" x1="0" y1="0" x2="1044" y2="0"/>
-              <line class="left" x1="0" y1="440" x2="0" y2="-1148"/>
-              <line class="bottom" x1="348" y1="440" x2="-696" y2="440"/>
-              <line class="right" x1="348" y1="0" x2="348" y2="1722"/>
-            </svg>

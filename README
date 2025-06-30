@@ -1,101 +1,101 @@
-Jekyll Twilight
+# 🌘 Jekyll Twilight
 
-## 🎥 Demo Video
-[![YouTube](http://i.ytimg.com/vi/HVFvPAbnSjQ/hqdefault.jpg)]
-(https://www.youtube.com/watch?v=HVFvPAbnSjQ)
+> A sleek, minimalist Jekyll theme built for modern creators.
 
-Click the image above to watch the demo video!
+[![Demo Video](http://i.ytimg.com/vi/HVFvPAbnSjQ/hqdefault.jpg)](https://www.youtube.com/watch?v=HVFvPAbnSjQ)
+📺 **Click the image to watch the demo!**
 
-Jekyll Twilight is a sleek, minimalist Jekyll theme designed to elevate your portfolio, blog, or personal website. With a focus on clean aesthetics and user experience, it provides a professional and polished online presence.
+---
 
-Live Demo | Installation | Configuration | Customization
-## ✨ What is Jekyll Twilight?
+**Jekyll Twilight** delivers a distraction-free, elegant experience. Whether you're a developer, designer, or dreamer — showcase your work with style.
 
-[![alt text](https://agustealo.github.io/images/Web-design-and-development-using-the-latest-internet-technologies.png)]
+👉 [Live Demo](https://agustealo.github.io) | [Installation](#-quick-start) | [Docs](#-configuration) | [License](#-license)
 
-Jekyll Twilight is a minimalist Jekyll theme perfect for creating modern, elegant websites with ease. Whether you're building a portfolio, blog, or personal website, this theme delivers a polished, distraction-free experience.
+---
 
-🛠️ Features
+## ✨ Overview
 
-Minimalist Design: Clean and modern interface for a distraction-free experience.
+![Jekyll Twilight](https://agustealo.github.io/images/Web-design-and-development-using-the-latest-internet-technologies.png)
 
-Responsive Layout: Optimized for all devices, ensuring a seamless user experience.
+Jekyll Twilight is the ultimate theme for creators who value simplicity and style. It features a modern interface, mobile-first design, and seamless integration with your social presence.
 
-Social Media Integration: Easily connect your social profiles with a built-in widget.
+---
 
-Customizable Widgets: Tailor the sidebar to match your content.
+## 🔧 Features
 
-SEO Optimized: Built with best practices for better search engine visibility.
+* ✅ **Minimalist UI** – Clean, focused layout
+* 📱 **Responsive** – Flawless on desktop, tablet, and mobile
+* 📣 **Social Widgets** – Plug-and-play profile links
+* 🧩 **Custom Widgets** – Easily extend sidebar content
+* 🔍 **SEO Ready** – Structured for optimal visibility
+* ⚡ **Fast Setup** – Launch your site in minutes
+* 🛠️ **Flexible Config** – Tweak to match your brand
+* 📚 **Full Documentation** – No guesswork setup
 
-Easy Installation: Get your site up and running in minutes.
+---
 
-Flexible Configuration: Customize the theme to match your brand.
+## 📦 Quick Start
 
-Comprehensive Documentation: Detailed instructions for installation and customization.
-
-📦 Quick Start
-
-Clone the Repository
-
+```bash
 git clone https://github.com/agustealo/jekyll-twilight.git
 cd jekyll-twilight
-
-Install Dependencies
-
 bundle install
-
-Start the Jekyll Server
-
 bundle exec jekyll serve
+```
 
-Your site will be available at http://localhost:4000.
+Your site runs at [http://localhost:4000](http://localhost:4000)
 
-🎮 Configuration
+---
 
-Customize your site by editing the _config.yml file. Here are some key options:
+## 🧩 Configuration
 
-title: Your Site Title
-description: Your Site Description
-author: Your Name
-email: your.email@example.com
-baseurl: "" # If your site is hosted in a subdirectory, set this to the subdirectory path
-url: "https://yourdomain.com" # Your site's domain
+Edit `_config.yml` to personalize your site:
+
+```yaml
+title: My Awesome Site
+description: Built with Jekyll Twilight
+author: Agustealo Johnson
+email: your@email.com
+baseurl: "" # Only change if using a subfolder
+url: "https://yourdomain.com"
 social_links:
-  github: "yourusername"
-  linkedin: "yourusername"
-  twitter: "yourusername"
-  # Add more social links as needed
+  github: yourusername
+  linkedin: yourusername
+  twitter: yourusername
+```
 
-🎯 Customization
+---
 
-Layouts
+## 🎨 Customization
 
-_layouts/home.html: Homepage layout.
+### 📁 Layouts
 
-_layouts/post.html: Post layout.
+* `_layouts/home.html` – Homepage
+* `_layouts/post.html` – Blog post
+* `_layouts/page.html` – Static pages
 
-_layouts/page.html: Page layout.
+### 🧱 Includes
 
-Includes
+* `_includes/header.html` – Header area
+* `_includes/footer.html` – Footer
+* `_includes/social-links.html` – Social icons
+* `_includes/widget.html` – Sidebar widget support
 
-_includes/header.html: Header section.
+### 🎨 Styles
 
-_includes/footer.html: Footer section.
+Modify `assets/css/JekyllTwilight.css`:
 
-_includes/social-links.html: Social media links.
-
-_includes/widget.html: Sidebar widgets.
-
-Styles
-
-Modify assets/css/JekyllTwilight.css to change the theme's appearance. Example:
-
+```css
 :root {
-  --primary-color: #3498db; /* Change this to your preferred color */
+  --primary-color: #e91e63; /* Hot pink just because */
 }
+```
 
-📁 Project Structure
+---
 
+## 🗂 Project Structure
+
+```
 jekyll-twilight/
 ├── _includes/
 │   ├── components/
@@ -120,27 +120,42 @@ jekyll-twilight/
 ├── config.rb
 ├── feed.xml
 └── index.html
+```
 
-📜 License
+---
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+## 📜 License
 
-✍️ Credits
+Licensed under the [MIT License](LICENSE).
+You are free to modify, use, and even sell — just give credit where it’s due.
 
-Design & Development: Agustealo Johnson
+---
 
-Inspired by: Various modern web standards and design principles
+## ✍️ Credits
 
-Built with: Jekyll, HTML5, CSS3, JavaScript
+**Design & Code:** Agustealo Johnson
+**Tech Stack:** Jekyll, HTML5, CSS3, JavaScript
+**Inspiration:** Minimalism + Developer Power
 
-🤝 Contributing
+---
 
-Contributions are welcome! Feel free to submit a pull request or open an issue.
+## 🤝 Contribute
 
-📧 Contact
+PRs welcome! Open issues, fix bugs, add features. Let’s build together.
+[→ Fork on GitHub](https://github.com/agustealo/jekyll-twilight)
 
-For questions or support, please contact Agustealo Johnson.
+---
 
-🌟 Want to see it in action?
+## 📬 Contact
 
-Check out the Live Demo!
+**Author:** Agustealo Johnson
+📧 Email: [agustealo.j@gmail.com](mailto:agustealo.j@gmail.com)
+🌐 [agustealo.com](https://agustealo.com)
+
+---
+
+## 🚀 See It Live
+
+👉 [🌐 Live Demo](https://agustealo.github.io)
+
+---

@@ -1,3 +1,26 @@
+title: Agustealo Design Studio
+description: Web design, development, and creative engineering using modern internet technologies.
+author: Agustealo Johnson
+url: "https://agustealo.github.io"
+baseurl: ""
+lang: en-US
+timezone: America/Detroit
+permalink: /:categories/:year/:month/:day/:title/
+
 sass:
   sass_dir: _sass
   style: compressed
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-redirect-from
+  - jekyll-include-cache
+  - jekyll-avatar
+
+exclude:
+  - README
+  - config.rb
+  - Gemfile
+  - Gemfile.lock

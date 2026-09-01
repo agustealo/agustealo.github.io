@@ -1,3 +1,9 @@
+title: Agustealo Design Studio
+description: Web design and development using modern internet technologies.
+url: "https://agustealo.github.io"
+baseurl: ""
+lang: en-US
+
 sass:
   sass_dir: _sass
   style: compressed

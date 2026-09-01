@@ -1,40 +1,16 @@
 <!-- _includes/head.html -->
 <!DOCTYPE html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if (IE 9)]><html class="no-js ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!-->
-
-<html lang="en-US" class="no-js">
-<!--<![endif]-->
-
+<html lang="{{ site.lang | default: 'en-US' }}" class="no-js">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Meta Tags -->
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  {% assign meta_title = page.title | default: site.title %}
+  {% assign meta_description = page.description | default: site.description %}
+  <title>{{ meta_title | escape }}</title>
+  <meta name="description" content="{{ meta_description | strip_html | strip_newlines | escape }}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
 
-<title>{{ page.title }}</title>   
-
-<meta name="description" content="{{ site.description }}" /> 
-
-<!-- Mobile Specifics -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="HandheldFriendly" content="true"/>
-<meta name="MobileOptimized" content="320"/>   
-
-<!-- Mobile Internet Explorer ClearType Technology -->
-<!--[if IEMobile]>  <meta http-equiv="cleartype" content="on">  <![endif]-->
-
-<!-- Main Style -->
-<link href="{{ site.url }}/css/style.css" rel="stylesheet">
-<!-- Fav Icon -->
-<link rel="shortcut icon" href="#">
-
-<link rel="apple-touch-icon" href="#">
-<link rel="apple-touch-icon" sizes="114x114" href="#">
-<link rel="apple-touch-icon" sizes="72x72" href="#">
-<link rel="apple-touch-icon" sizes="144x144" href="#">
-
+  <link href="{{ '/css/style.css' | relative_url }}" rel="stylesheet">
 </head>
 <body>

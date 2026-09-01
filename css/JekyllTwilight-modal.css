@@ -1,0 +1,71 @@
+.md-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1002;
+  width: min(92vw, 720px);
+  max-height: 86vh;
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(-50%, -46%) scale(0.96);
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+  pointer-events: none;
+}
+
+.md-modal.md-show {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+.md-content {
+  background: #2f3238;
+  color: #f2f2f2;
+  border: 1px solid #7f82ac;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  padding: 1.5rem;
+}
+
+.md-content h3 {
+  margin-top: 0;
+  color: #e9c6eb;
+}
+
+.md-content a {
+  color: #9fa6ff;
+}
+
+.md-content .button {
+  margin: 0.75rem 0.5rem 0 0;
+}
+
+.md-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(3px);
+}
+
+.md-overlay[hidden] {
+  display: none;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+[data-modal]:focus-visible,
+.md-close:focus-visible,
+.md-content a:focus-visible {
+  outline: 3px solid #e9c6eb;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-modal {
+    transition: none;
+  }
+}

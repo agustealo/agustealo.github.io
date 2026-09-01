@@ -1,0 +1,48 @@
+name: Site Quality
+
+on:
+  pull_request:
+    branches: ["master"]
+  push:
+    branches: ["master"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build --trace
+        env:
+          JEKYLL_ENV: production
+
+      - name: Assert critical generated surfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f _site/index.html
+          test -f _site/css/style.css
+          test -f _site/js/JekyllTwilight.js
+          test -f _site/js/JekyllTwilight-portfolio.js
+          grep -q 'id="work"' _site/index.html
+          grep -q 'id="blog"' _site/index.html
+          grep -q 'id="modal-1"' _site/index.html
+          grep -q 'https://agustealo.com/' _site/index.html
+          ! grep -q 'href="about.html"' _site/index.html
+          ! grep -q 'href="shortcodes.html"' _site/index.html
+          ! grep -q 'http:www.agustealo.com' _site/index.html

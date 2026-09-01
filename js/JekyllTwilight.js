@@ -1,7 +1,6 @@
 (function () {
   const JekyllTwilight = window.JekyllTwilight || {};
 
-  /* Utility: Debounce */
   function debounce(func, wait, immediate) {
     let timeout;
     return function () {
@@ -17,7 +16,6 @@
     };
   }
 
-  /* Mobile Navigation */
   JekyllTwilight.mobileNav = function () {
     const windowWidth = window.innerWidth;
     const mobileNavToggle = document.getElementById('mobile-nav');
@@ -29,7 +27,10 @@
         const mobileMenuClone = menu.cloneNode(true);
         mobileMenuClone.id = 'navigation-mobile';
         mobileMenuClone.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
-        mobileMenuClone.querySelector('ul').id = 'menu-nav-mobile';
+        const mobileList = mobileMenuClone.querySelector('ul');
+        if (mobileList) {
+          mobileList.id = 'menu-nav-mobile';
+        }
         mobileMenuClone.querySelectorAll('.dropdown-toggle').forEach(toggle => {
           toggle.addEventListener('click', function (e) {
             e.preventDefault();
@@ -42,6 +43,7 @@
     } else if (navigationMobile) {
       navigationMobile.remove();
       mobileNavToggle?.classList.remove('open');
+      mobileNavToggle?.setAttribute('aria-expanded', 'false');
     }
   };
 
@@ -51,31 +53,31 @@
     if (mobileNavToggle && navigationMobile) {
       mobileNavToggle.addEventListener('click', function (e) {
         e.preventDefault();
-        this.classList.toggle('open');
-        navigationMobile.classList.toggle('open');
+        const isOpen = this.classList.toggle('open');
+        navigationMobile.classList.toggle('open', isOpen);
+        this.setAttribute('aria-expanded', String(isOpen));
       });
 
       navigationMobile.querySelectorAll('#menu-nav-mobile a').forEach(link => {
         link.addEventListener('click', () => {
           mobileNavToggle.classList.remove('open');
           navigationMobile.classList.remove('open');
+          mobileNavToggle.setAttribute('aria-expanded', 'false');
         });
       });
     }
   };
 
-  /* Sticky Navigation */
   JekyllTwilight.nav = function () {
     const stickyNav = document.querySelector('.sticky-nav');
-    if (stickyNav) {
+    if (stickyNav && 'IntersectionObserver' in window) {
       const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => e.target.classList.toggle('is-sticky', !e.isIntersecting));
+        entries.forEach(entry => entry.target.classList.toggle('is-sticky', !entry.isIntersecting));
       }, { threshold: 0 });
       observer.observe(stickyNav);
     }
   };
 
-  /* Scroll to Top */
   JekyllTwilight.scrollToTop = function () {
     const arrow = document.getElementById('back-to-top');
     if (!arrow) return;
@@ -90,10 +92,10 @@
     }, 100));
   };
 
-  /* Initialization */
   document.addEventListener('DOMContentLoaded', function () {
-    console.log('JekyllTwilight: DOMContentLoaded event fired.');
-    JekyllTwilight.slider();
+    if (typeof JekyllTwilight.slider === 'function') {
+      JekyllTwilight.slider();
+    }
     JekyllTwilight.nav();
     JekyllTwilight.mobileNav();
     JekyllTwilight.listenerMenu();

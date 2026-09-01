@@ -38,12 +38,25 @@ jobs:
           set -euo pipefail
           test -f _site/index.html
           test -f _site/css/style.css
+          test -f _site/css/JekyllTwilight-modal.css
+          test -f _site/css/JekyllTwilight-social.css
           test -f _site/js/JekyllTwilight.js
           test -f _site/js/JekyllTwilight-portfolio.js
+
           grep -q 'id="work"' _site/index.html
           grep -q 'id="blog"' _site/index.html
           grep -q 'id="modal-1"' _site/index.html
+          grep -q 'aria-label="Social media"' _site/index.html
+          grep -q 'rel="noopener noreferrer"' _site/index.html
           grep -q 'https://agustealo.com/' _site/index.html
+
           ! grep -q 'href="about.html"' _site/index.html
           ! grep -q 'href="shortcodes.html"' _site/index.html
           ! grep -q 'http:www.agustealo.com' _site/index.html
+          ! grep -q '<button[^>]*><a ' _site/index.html
+          ! grep -q 'href="http://instagram.com' _site/index.html
+          ! grep -q 'href="http://github.com' _site/index.html
+          ! grep -q 'href="http://behance.net' _site/index.html
+
+          grep -q 'focusableSelector' _site/js/JekyllTwilight-portfolio.js
+          grep -q 'trapModalFocus' _site/js/JekyllTwilight-portfolio.js

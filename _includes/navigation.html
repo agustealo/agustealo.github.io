@@ -1,16 +1,15 @@
 <header>
   <div class="sticky-nav">
-    <a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
+    <a id="mobile-nav" class="menu-nav" href="#menu-nav" aria-label="Toggle navigation" aria-controls="menu-nav" aria-expanded="false"></a>
     <div id="logo">
-      <a id="goUp" href="{{ HOME_PATH }}" title="Jekyll Twilight | Responsive One Page Template">Agustealo</a>
+      <a id="goUp" href="{{ '/' | relative_url }}" title="Agustealo home">Agustealo</a>
     </div>
-    <nav id="menu">
+    <nav id="menu" aria-label="Primary navigation">
       <ul id="menu-nav">
-        <li class="current"><a href="home-slider">Home</a></li>
-        <li><a href="{{ HOME_PATH }}/about.html">About Me</a></li>
-        <li><a href="latest">Latest Dev</a></li>
-        <li><a href="blog">Blog</a></li>
-        <li><a href="shortcodes.html" class="external">Design Blog</a></li>
+        <li class="current"><a href="#home-slider">Home</a></li>
+        <li><a href="#latest">Featured Dev</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="https://agustealo.com/" class="external" rel="noopener">Design Blog</a></li>
       </ul>
     </nav>
   </div>

@@ -1,6 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
   window.JekyllTwilight = window.JekyllTwilight || {};
 
+  function resizeMasonryGrid() {
+    const grid = document.querySelector('.project-contents');
+    if (!grid) return;
+
+    const computedStyle = window.getComputedStyle(grid);
+    const columns = parseInt(computedStyle.getPropertyValue('--columns'), 10) || 3;
+    const columnWidth = grid.offsetWidth / columns;
+
+    document.querySelectorAll('.project:not([hidden])').forEach(item => {
+      const rowSpan = Math.ceil((item.offsetHeight + 20) / columnWidth);
+      item.style.gridRowEnd = `span ${rowSpan}`;
+    });
+  }
+
   window.JekyllTwilight.filterWorks = function (filterValue = '*') {
     const projects = document.querySelectorAll('.project');
 
@@ -8,13 +22,17 @@ document.addEventListener('DOMContentLoaded', function () {
       const matches = filterValue === '*' || project.classList.contains(filterValue.substring(1));
       project.classList.toggle('show', matches);
       project.hidden = !matches;
+      if (!matches) project.style.removeProperty('grid-row-end');
     });
 
     document.querySelectorAll('.project-filter a').forEach(button => {
       const selected = button.getAttribute('data-filter') === filterValue;
       button.classList.toggle('selected', selected);
-      button.setAttribute('aria-current', selected ? 'true' : 'false');
+      if (selected) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
     });
+
+    requestAnimationFrame(resizeMasonryGrid);
   };
 
   document.querySelectorAll('.project-filter a').forEach(filter => {
@@ -139,20 +157,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     trapModalFocus(event);
   });
-
-  function resizeMasonryGrid() {
-    const grid = document.querySelector('.project-contents');
-    if (!grid) return;
-
-    const computedStyle = window.getComputedStyle(grid);
-    const columns = parseInt(computedStyle.getPropertyValue('--columns'), 10) || 3;
-    const columnWidth = grid.offsetWidth / columns;
-
-    document.querySelectorAll('.project:not([hidden])').forEach(item => {
-      const rowSpan = Math.ceil((item.offsetHeight + 20) / columnWidth);
-      item.style.gridRowEnd = `span ${rowSpan}`;
-    });
-  }
 
   window.JekyllTwilight.filterWorks('*');
   window.addEventListener('load', resizeMasonryGrid);

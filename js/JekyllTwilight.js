@@ -23,6 +23,13 @@
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
+  function closeMobileNav(toggle, navigationMobile) {
+    navigationMobile?.classList.remove('open');
+    toggle?.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.setAttribute('aria-label', 'Open navigation');
+  }
+
   JekyllTwilight.mobileNav = function () {
     const mobileNavToggle = document.getElementById('mobile-nav');
     const menu = document.getElementById('menu');
@@ -43,26 +50,19 @@
         menu.insertAdjacentElement('afterend', navigationMobile);
       }
 
-      mobileNavToggle.setAttribute('aria-controls', 'navigation-mobile');
       mobileNavToggle.setAttribute('aria-expanded', navigationMobile.classList.contains('open') ? 'true' : 'false');
       return;
     }
 
     navigationMobile?.remove();
-    mobileNavToggle.classList.remove('open');
-    mobileNavToggle.setAttribute('aria-expanded', 'false');
+    closeMobileNav(mobileNavToggle, null);
   };
 
   JekyllTwilight.listenerMenu = function () {
     const mobileNavToggle = document.getElementById('mobile-nav');
     if (!mobileNavToggle) return;
 
-    mobileNavToggle.setAttribute('role', 'button');
-    mobileNavToggle.setAttribute('aria-label', 'Toggle navigation');
-    mobileNavToggle.setAttribute('aria-expanded', 'false');
-
-    mobileNavToggle.addEventListener('click', function (event) {
-      event.preventDefault();
+    mobileNavToggle.addEventListener('click', function () {
       const navigationMobile = document.getElementById('navigation-mobile');
       if (!navigationMobile) return;
 
@@ -70,18 +70,16 @@
       navigationMobile.classList.toggle('open', isOpen);
       this.classList.toggle('open', isOpen);
       this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      this.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
     });
 
     document.addEventListener('click', function (event) {
       const navigationMobile = document.getElementById('navigation-mobile');
       if (!navigationMobile || !navigationMobile.contains(event.target)) return;
 
-      const link = event.target.closest('a');
-      if (!link) return;
-
-      navigationMobile.classList.remove('open');
-      mobileNavToggle.classList.remove('open');
-      mobileNavToggle.setAttribute('aria-expanded', 'false');
+      if (event.target.closest('a')) {
+        closeMobileNav(mobileNavToggle, navigationMobile);
+      }
     });
   };
 

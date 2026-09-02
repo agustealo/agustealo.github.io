@@ -11,9 +11,9 @@ title: Web design and development using the latest internet technologies.
     </div>
   </div>
 
-  <div class="blog-grid">
+  <div class="row mx-5">
     {% for post in site.posts %}
-      <article class="widget-bottom line-fx blog-card">
+      <article class="widget-bottom line-fx col-12 col-md-6 col-lg-4 mx-2">
         <a href="{{ post.url | relative_url }}" class="blog-link">
           <div class="bg-fx">
             <h3>{{ post.title }}</h3>

@@ -16,6 +16,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,6 +41,15 @@ jobs:
           set -euo pipefail
 
           test ! -e config.rb
+          test ! -e twitter
+          test ! -e images/background.jpg
+          test ! -e images/filter-icon.png
+          test ! -e images/filter-icon_@2x.png
+          test ! -e images/profile
+          test ! -e images/slider-images/image02.jpg
+          test ! -e images/slider-images/image03.jpg
+          test ! -e images/slider-images/image04.jpg
+
           ! grep -q 'susy' Gemfile Gemfile.lock
           ! grep -q 'jekyll-feed' Gemfile Gemfile.lock _config.yml
           ! grep -q 'jekyll-archives' Gemfile Gemfile.lock _config.yml
@@ -58,6 +68,7 @@ jobs:
           test -f _site/js/JekyllTwilight.js
           test -f _site/js/JekyllTwilight-portfolio.js
           test ! -f _site/js/JekyllTwilight-slider.js
+          test ! -e _site/twitter
 
           grep -q 'id="home-slider"' _site/index.html
           grep -q 'id="hero-title"' _site/index.html
@@ -67,7 +78,10 @@ jobs:
           grep -q 'id="modal-1"' _site/index.html
           grep -q 'aria-label="Social media"' _site/index.html
           grep -q 'rel="noopener noreferrer"' _site/index.html
+          grep -q 'rel="alternate" type="application/rss+xml"' _site/index.html
           grep -q 'https://agustealo.com/' _site/index.html
+          grep -q '<rss version="2.0"' _site/feed.xml
+          grep -q '<guid isPermaLink="true">https://agustealo.github.io/' _site/feed.xml
 
           ! grep -q '<canvas id="animation"' _site/index.html
           ! grep -q 'JekyllTwilight-slider.js' _site/index.html
@@ -78,6 +92,7 @@ jobs:
           ! grep -q 'href="http://instagram.com' _site/index.html
           ! grep -q 'href="http://github.com' _site/index.html
           ! grep -q 'href="http://behance.net' _site/index.html
+          ! grep -q 'YOUR_CONSUMER_KEY' _site/index.html _site/feed.xml
 
           grep -q 'focusableSelector' _site/js/JekyllTwilight-portfolio.js
           grep -q 'trapModalFocus' _site/js/JekyllTwilight-portfolio.js

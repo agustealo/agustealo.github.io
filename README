@@ -43,7 +43,7 @@ index.html           Home page content
 
 ## Configuration
 
-Site identity, canonical URL, social profiles, permalink behavior, and active plugins are defined in `_config.yml`.
+Site identity, canonical URL, social profiles, permalink behavior, excerpt behavior, and active plugins are defined in `_config.yml`.
 
 The dependency surface is intentionally small. Jekyll owns its transitive Sass/watch dependencies; the project directly declares only Jekyll, BigDecimal, the sitemap plugin, and the SEO tag plugin.
 
@@ -51,7 +51,7 @@ The dependency surface is intentionally small. Jekyll owns its transitive Sass/w
 
 Pull requests run the `Site Quality` workflow. It installs the locked Ruby dependencies, performs a production Jekyll build, and asserts critical generated surfaces and known regression conditions.
 
-A successful build is required evidence before the audit stack should be merged.
+A successful build is required evidence before a pull request should be merged.
 
 ## Deployment
 
@@ -59,4 +59,4 @@ Pushes to `master` use `.github/workflows/jekyll.yml` to build the source tree a
 
 ## License
 
-MIT.
+No repository license file is currently present. Do not assume reuse rights beyond what the repository owner has explicitly granted.

@@ -26,16 +26,31 @@ jobs:
           ruby-version: '3.1'
           bundler-cache: true
 
+      - name: Verify locked dependencies
+        run: bundle check
+
       - name: Build Jekyll site
         run: bundle exec jekyll build --trace
         env:
           JEKYLL_ENV: production
 
-      - name: Assert critical generated surfaces
+      - name: Assert repository and generated surfaces
         shell: bash
         run: |
           set -euo pipefail
+
+          test ! -e config.rb
+          ! grep -q 'susy' Gemfile Gemfile.lock
+          ! grep -q 'jekyll-feed' Gemfile Gemfile.lock _config.yml
+          ! grep -q 'jekyll-archives' Gemfile Gemfile.lock _config.yml
+          ! grep -q 'jekyll-avatar' Gemfile Gemfile.lock _config.yml
+          ! grep -q 'jekyll-include-cache' Gemfile Gemfile.lock _config.yml
+          ! grep -q 'jekyll-redirect-from' Gemfile Gemfile.lock _config.yml
+          grep -q 'jekyll-seo-tag (2.9.0)' Gemfile.lock
+
           test -f _site/index.html
+          test -f _site/feed.xml
+          test -f _site/sitemap.xml
           test -f _site/css/style.css
           test -f _site/css/JekyllTwilight-modal.css
           test -f _site/css/JekyllTwilight-social.css

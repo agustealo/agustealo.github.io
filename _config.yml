@@ -6,6 +6,7 @@ baseurl: ""
 lang: en-US
 timezone: America/Detroit
 permalink: /:categories/:year/:month/:day/:title/
+excerpt_separator: "<!-- more -->"
 
 social_links:
   - name: X / Twitter

@@ -66,6 +66,18 @@ jobs:
             test -f "images/icons/$icon"
           done
 
+          ! grep -q '@for' css/JekyllTwilight-grid.css
+          grep -q '^\.col-12 ' css/JekyllTwilight-grid.css
+          grep -q '^  \.col-md-12 ' css/JekyllTwilight-grid.css
+          grep -q '^  \.col-lg-6 ' css/JekyllTwilight-grid.css
+          grep -q '\.portfolio-trigger' css/JekyllTwilight-portfolio.css
+          grep -q '<button class="bg-fx portfolio-trigger"' _includes/home/our-work.html
+          ! grep -q 'data-modal=.*role="button"' _includes/home/our-work.html
+          ! grep -q 'tabindex="0"' _includes/home/our-work.html
+          ! grep -q 'resizeMasonryGrid' js/JekyllTwilight-portfolio.js
+          ! grep -q 'grid-row-end' js/JekyllTwilight-portfolio.js
+          ! grep -q "event.key === 'Enter'" js/JekyllTwilight-portfolio.js
+
           ! grep -q 'susy' Gemfile Gemfile.lock
           ! grep -q 'jekyll-feed' Gemfile Gemfile.lock _config.yml
           ! grep -q 'jekyll-archives' Gemfile Gemfile.lock _config.yml
@@ -92,6 +104,7 @@ jobs:
           test -f _site/feed.xml
           test -f _site/sitemap.xml
           test -f _site/css/style.css
+          test -f _site/css/JekyllTwilight-grid.css
           test -f _site/css/JekyllTwilight-post.css
           test -f _site/css/JekyllTwilight-modal.css
           test -f _site/css/JekyllTwilight-social.css
@@ -112,6 +125,10 @@ jobs:
           grep -q 'rel="alternate" type="application/rss+xml"' _site/index.html
           grep -q 'https://agustealo.com/' _site/index.html
           grep -q '<button id="mobile-nav"' _site/index.html
+          grep -q '<button class="bg-fx portfolio-trigger"' _site/index.html
+          ! grep -q 'data-modal=.*role="button"' _site/index.html
+          ! grep -q '@for' _site/css/JekyllTwilight-grid.css
+          grep -q '^\.col-4 ' _site/css/JekyllTwilight-grid.css
           grep -q '<rss version="2.0"' _site/feed.xml
           grep -q '<guid isPermaLink="true">https://agustealo.github.io/' _site/feed.xml
           ! grep -q '<!-- more -->' _site/feed.xml
@@ -144,7 +161,8 @@ jobs:
           grep -q 'focusableSelector' _site/js/JekyllTwilight-portfolio.js
           grep -q 'trapModalFocus' _site/js/JekyllTwilight-portfolio.js
           grep -q "removeAttribute('aria-current')" _site/js/JekyllTwilight-portfolio.js
-          grep -q 'requestAnimationFrame(resizeMasonryGrid)' _site/js/JekyllTwilight-portfolio.js
+          ! grep -q 'resizeMasonryGrid' _site/js/JekyllTwilight-portfolio.js
+          ! grep -q 'grid-row-end' _site/js/JekyllTwilight-portfolio.js
           grep -q 'aria-expanded' _site/js/JekyllTwilight.js
           grep -q 'Close navigation' _site/js/JekyllTwilight.js
           grep -q 'prefers-reduced-motion' _site/js/JekyllTwilight.js

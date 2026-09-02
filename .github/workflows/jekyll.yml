@@ -29,6 +29,7 @@ jobs:
         run: bundle check
 
       - name: Setup Pages
+        if: github.event_name != 'pull_request'
         id: pages
         uses: actions/configure-pages@v6
 

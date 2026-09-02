@@ -49,6 +49,8 @@ jobs:
 
           test ! -e config.rb
           test ! -e twitter
+          test ! -e LICENSE
+          test ! -e LICENSE.md
           test ! -e images/background.jpg
           test ! -e images/filter-icon.png
           test ! -e images/filter-icon_@2x.png
@@ -56,6 +58,13 @@ jobs:
           test ! -e images/slider-images/image02.jpg
           test ! -e images/slider-images/image03.jpg
           test ! -e images/slider-images/image04.jpg
+
+          grep -q 'excerpt_separator: "<!-- more -->"' _config.yml
+          ! grep -q '^MIT\.$' README
+          grep -q 'No repository license file is currently present' README
+          for icon in twitter-alt.svg instagram.svg github.svg behance.svg facebook.svg; do
+            test -f "images/icons/$icon"
+          done
 
           ! grep -q 'susy' Gemfile Gemfile.lock
           ! grep -q 'jekyll-feed' Gemfile Gemfile.lock _config.yml
@@ -105,6 +114,7 @@ jobs:
           grep -q '<button id="mobile-nav"' _site/index.html
           grep -q '<rss version="2.0"' _site/feed.xml
           grep -q '<guid isPermaLink="true">https://agustealo.github.io/' _site/feed.xml
+          ! grep -q '<!-- more -->' _site/feed.xml
 
           test -f _site/understanding-css-size-properties/index.html
           test -f _site/things-a-designer-hates-hear/index.html

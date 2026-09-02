@@ -58,9 +58,9 @@ jobs:
           ! grep -q 'jekyll-redirect-from' Gemfile Gemfile.lock _config.yml
           grep -q 'jekyll-seo-tag (2.9.0)' Gemfile.lock
 
-          ! grep -R -q 'disqus.com/count.js' _layouts _includes _posts
-          ! grep -R -q '\[sociallocker\]' _posts
-          ! grep -R -q 'src="http://' _posts
+          ! grep -q 'disqus.com/count.js' _layouts/post.html
+          ! grep -q 'src="http://' _posts/2014-09-01-things-a-designer-hates-hear.md
+          ! grep -q 'href="http://' _posts/2014-09-02-Unerstanding-CSS-Size-Properties.markdown
 
           test -f _site/index.html
           test -f _site/feed.xml

@@ -65,6 +65,11 @@ jobs:
           for icon in twitter-alt.svg instagram.svg github.svg behance.svg facebook.svg; do
             test -f "images/icons/$icon"
           done
+          test ! -e _includes/home/social.html
+          test ! -e _includes/home/twitter.html
+          grep -q 'include home/social-links.html' _includes/footer.html
+          ! grep -R -q 'include home/social.html' _includes _layouts index.html
+          ! grep -R -q 'include home/twitter.html' _includes _layouts index.html
 
           ! grep -q '@for' css/JekyllTwilight-grid.css
           grep -q '^\.col-12 ' css/JekyllTwilight-grid.css

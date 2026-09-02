@@ -61,6 +61,12 @@ jobs:
           ! grep -q 'disqus.com/count.js' _layouts/post.html
           ! grep -q 'src="http://' _posts/2014-09-01-things-a-designer-hates-hear.md
           ! grep -q 'href="http://' _posts/2014-09-02-Unerstanding-CSS-Size-Properties.markdown
+          ! grep -q '\[sociallocker\]' _posts/2014-09-03-self-marketing-for-freelance-designers.md
+          ! grep -q '\[/sociallocker\]' _posts/2014-09-03-self-marketing-for-freelance-designers.md
+          ! grep -q 'style=' _posts/2014-09-03-self-marketing-for-freelance-designers.md
+          ! grep -q 'src="http://' _posts/2014-09-03-self-marketing-for-freelance-designers.md
+          ! grep -q 'Google Reader' _posts/2014-09-03-self-marketing-for-freelance-designers.md
+          grep -q 'Archive note:' _posts/2014-09-03-self-marketing-for-freelance-designers.md
 
           test -f _site/index.html
           test -f _site/feed.xml
@@ -90,11 +96,17 @@ jobs:
 
           test -f _site/understanding-css-size-properties/index.html
           test -f _site/things-a-designer-hates-hear/index.html
+          test -f _site/self-marketing-for-freelance-designers/index.html
           grep -q '<article class="post" aria-labelledby="post-title">' _site/understanding-css-size-properties/index.html
           grep -q '<time datetime=' _site/understanding-css-size-properties/index.html
           grep -q 'rel="noopener noreferrer"' _site/understanding-css-size-properties/index.html
           grep -q 'loading="lazy"' _site/things-a-designer-hates-hear/index.html
           grep -q 'decoding="async"' _site/things-a-designer-hates-hear/index.html
+          grep -q '<strong>Archive note:</strong>' _site/self-marketing-for-freelance-designers/index.html
+          grep -q 'loading="lazy"' _site/self-marketing-for-freelance-designers/index.html
+          grep -q 'decoding="async"' _site/self-marketing-for-freelance-designers/index.html
+          ! grep -q '\[sociallocker\]' _site/self-marketing-for-freelance-designers/index.html
+          ! grep -q 'http://i[0-9]\.wp\.com' _site/self-marketing-for-freelance-designers/index.html
 
           ! grep -q '<canvas id="animation"' _site/index.html
           ! grep -q 'JekyllTwilight-slider.js' _site/index.html

@@ -1,0 +1,31 @@
+/* Runtime state corrections */
+header .sticky-nav {
+  position: sticky;
+  top: 0;
+}
+
+#back-to-top {
+  display: block;
+}
+
+#back-to-top[hidden] {
+  display: none;
+}
+
+#mobile-nav:focus-visible,
+#navigation-mobile a:focus-visible,
+#back-to-top:focus-visible {
+  outline: 3px solid #e9c6eb;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-nav,
+  #back-to-top,
+  .profile,
+  .item-thumbs,
+  .line-fx {
+    transition: none !important;
+    animation: none !important;
+  }
+}

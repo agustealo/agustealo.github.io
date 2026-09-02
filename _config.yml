@@ -24,20 +24,11 @@ social_links:
     url: "https://facebook.com/Agustealo"
     icon: facebook.svg
 
-sass:
-  sass_dir: _sass
-  style: compressed
-
 plugins:
-  - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-redirect-from
-  - jekyll-include-cache
-  - jekyll-avatar
 
 exclude:
   - README
-  - config.rb
   - Gemfile
   - Gemfile.lock

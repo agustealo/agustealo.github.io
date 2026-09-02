@@ -78,6 +78,12 @@ jobs:
           ! grep -q 'grid-row-end' js/JekyllTwilight-portfolio.js
           ! grep -q "event.key === 'Enter'" js/JekyllTwilight-portfolio.js
 
+          grep -q 'position: sticky;' css/JekyllTwilight.css
+          ! grep -q 'sticky-nav\.stuck' css/JekyllTwilight.css
+          ! grep -q 'header \.sticky-nav' css/JekyllTwilight-runtime.css
+          ! grep -q "@import url('JekyllTwilight-grid.css')" css/JekyllTwilight.css
+          grep -q "@import url('JekyllTwilight-grid.css')" css/style.css
+
           ! grep -q 'susy' Gemfile Gemfile.lock
           ! grep -q 'jekyll-feed' Gemfile Gemfile.lock _config.yml
           ! grep -q 'jekyll-archives' Gemfile Gemfile.lock _config.yml
@@ -129,6 +135,8 @@ jobs:
           ! grep -q 'data-modal=.*role="button"' _site/index.html
           ! grep -q '@for' _site/css/JekyllTwilight-grid.css
           grep -q '^\.col-4 ' _site/css/JekyllTwilight-grid.css
+          ! grep -q 'sticky-nav\.stuck' _site/css/JekyllTwilight.css
+          ! grep -q 'header \.sticky-nav' _site/css/JekyllTwilight-runtime.css
           grep -q '<rss version="2.0"' _site/feed.xml
           grep -q '<guid isPermaLink="true">https://agustealo.github.io/' _site/feed.xml
           ! grep -q '<!-- more -->' _site/feed.xml

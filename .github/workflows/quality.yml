@@ -40,6 +40,13 @@ jobs:
         run: |
           set -euo pipefail
 
+          test -f CONTRIBUTING.md
+          test -f .github/pull_request_template.md
+          test -f docs/RELEASE_SMOKE.md
+          grep -q 'Site Quality / build' CONTRIBUTING.md
+          grep -q 'Site Quality' .github/pull_request_template.md
+          grep -q 'Do not call a release healthy solely because GitHub Actions is green' docs/RELEASE_SMOKE.md
+
           test ! -e config.rb
           test ! -e twitter
           test ! -e images/background.jpg

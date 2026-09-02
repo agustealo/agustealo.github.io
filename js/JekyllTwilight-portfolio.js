@@ -5,13 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const grid = document.querySelector('.project-contents');
     if (!grid) return;
 
-    const computedStyle = window.getComputedStyle(grid);
-    const columns = parseInt(computedStyle.getPropertyValue('--columns'), 10) || 3;
-    const columnWidth = grid.offsetWidth / columns;
-
     document.querySelectorAll('.project:not([hidden])').forEach(item => {
-      const rowSpan = Math.ceil((item.offsetHeight + 20) / columnWidth);
-      item.style.gridRowEnd = `span ${rowSpan}`;
+      item.style.removeProperty('grid-row-end');
     });
   }
 
@@ -133,12 +128,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelectorAll('[data-modal]').forEach(trigger => {
     trigger.addEventListener('click', () => openModal(trigger));
-    trigger.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        openModal(trigger);
-      }
-    });
   });
 
   document.querySelectorAll('.md-modal').forEach(modal => {
@@ -160,5 +149,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.JekyllTwilight.filterWorks('*');
   window.addEventListener('load', resizeMasonryGrid);
-  window.addEventListener('resize', resizeMasonryGrid);
 });

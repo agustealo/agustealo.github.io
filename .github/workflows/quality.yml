@@ -68,6 +68,10 @@ jobs:
           ! grep -q 'Google Reader' _posts/2014-09-03-self-marketing-for-freelance-designers.md
           grep -q 'Archive note:' _posts/2014-09-03-self-marketing-for-freelance-designers.md
 
+          grep -q '<button id="mobile-nav"' _includes/navigation.html
+          ! grep -q 'id="mobile-nav"[^>]*href=' _includes/navigation.html
+          ! grep -q 'height="auto"' _includes/header.html
+
           test -f _site/index.html
           test -f _site/feed.xml
           test -f _site/sitemap.xml
@@ -91,6 +95,7 @@ jobs:
           grep -q 'rel="noopener noreferrer"' _site/index.html
           grep -q 'rel="alternate" type="application/rss+xml"' _site/index.html
           grep -q 'https://agustealo.com/' _site/index.html
+          grep -q '<button id="mobile-nav"' _site/index.html
           grep -q '<rss version="2.0"' _site/feed.xml
           grep -q '<guid isPermaLink="true">https://agustealo.github.io/' _site/feed.xml
 
@@ -121,5 +126,8 @@ jobs:
 
           grep -q 'focusableSelector' _site/js/JekyllTwilight-portfolio.js
           grep -q 'trapModalFocus' _site/js/JekyllTwilight-portfolio.js
+          grep -q "removeAttribute('aria-current')" _site/js/JekyllTwilight-portfolio.js
+          grep -q 'requestAnimationFrame(resizeMasonryGrid)' _site/js/JekyllTwilight-portfolio.js
           grep -q 'aria-expanded' _site/js/JekyllTwilight.js
+          grep -q 'Close navigation' _site/js/JekyllTwilight.js
           grep -q 'prefers-reduced-motion' _site/js/JekyllTwilight.js

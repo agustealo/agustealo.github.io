@@ -1,0 +1,63 @@
+.post {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 5rem) 1rem;
+}
+
+.post-header {
+  margin-bottom: 2rem;
+}
+
+.post-title {
+  margin-bottom: 0.5rem;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.post-meta {
+  margin: 0;
+  color: #b6b8cf;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+}
+
+.post-content {
+  color: #d7d8e4;
+  overflow-wrap: anywhere;
+}
+
+.post-content p,
+.post-content li {
+  line-height: 1.75;
+}
+
+.post-content img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+}
+
+.post-content a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.post-content a:focus-visible,
+.post-footer a:focus-visible {
+  outline: 3px solid #e9c6eb;
+  outline-offset: 3px;
+}
+
+.post-content pre {
+  max-width: 100%;
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.post-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #4a4d57;
+}

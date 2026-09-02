@@ -58,10 +58,15 @@ jobs:
           ! grep -q 'jekyll-redirect-from' Gemfile Gemfile.lock _config.yml
           grep -q 'jekyll-seo-tag (2.9.0)' Gemfile.lock
 
+          ! grep -q 'disqus.com/count.js' _layouts/post.html
+          ! grep -q 'src="http://' _posts/2014-09-01-things-a-designer-hates-hear.md
+          ! grep -q 'href="http://' _posts/2014-09-02-Unerstanding-CSS-Size-Properties.markdown
+
           test -f _site/index.html
           test -f _site/feed.xml
           test -f _site/sitemap.xml
           test -f _site/css/style.css
+          test -f _site/css/JekyllTwilight-post.css
           test -f _site/css/JekyllTwilight-modal.css
           test -f _site/css/JekyllTwilight-social.css
           test -f _site/css/JekyllTwilight-runtime.css
@@ -82,6 +87,14 @@ jobs:
           grep -q 'https://agustealo.com/' _site/index.html
           grep -q '<rss version="2.0"' _site/feed.xml
           grep -q '<guid isPermaLink="true">https://agustealo.github.io/' _site/feed.xml
+
+          test -f _site/understanding-css-size-properties/index.html
+          test -f _site/things-a-designer-hates-hear/index.html
+          grep -q '<article class="post" aria-labelledby="post-title">' _site/understanding-css-size-properties/index.html
+          grep -q '<time datetime=' _site/understanding-css-size-properties/index.html
+          grep -q 'rel="noopener noreferrer"' _site/understanding-css-size-properties/index.html
+          grep -q 'loading="lazy"' _site/things-a-designer-hates-hear/index.html
+          grep -q 'decoding="async"' _site/things-a-designer-hates-hear/index.html
 
           ! grep -q '<canvas id="animation"' _site/index.html
           ! grep -q 'JekyllTwilight-slider.js' _site/index.html

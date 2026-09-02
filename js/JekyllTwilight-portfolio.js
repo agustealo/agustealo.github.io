@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.querySelectorAll('.project-filter a').forEach(button => {
-      button.classList.toggle('selected', button.getAttribute('data-filter') === filterValue);
-      button.setAttribute('aria-current', button.getAttribute('data-filter') === filterValue ? 'true' : 'false');
+      const selected = button.getAttribute('data-filter') === filterValue;
+      button.classList.toggle('selected', selected);
+      button.setAttribute('aria-current', selected ? 'true' : 'false');
     });
   };
 
@@ -28,8 +29,23 @@ document.addEventListener('DOMContentLoaded', function () {
   modalOverlay.hidden = true;
   document.body.appendChild(modalOverlay);
 
+  const focusableSelector = [
+    'a[href]',
+    'button:not([disabled])',
+    'input:not([disabled])',
+    'select:not([disabled])',
+    'textarea:not([disabled])',
+    '[tabindex]:not([tabindex="-1"])'
+  ].join(',');
+
   let activeModal = null;
   let lastTrigger = null;
+
+  function getFocusableElements(modal) {
+    return Array.from(modal.querySelectorAll(focusableSelector)).filter(element => {
+      return !element.hasAttribute('hidden') && element.getAttribute('aria-hidden') !== 'true';
+    });
+  }
 
   function closeModal() {
     if (!activeModal) return;
@@ -50,6 +66,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const modal = modalId ? document.getElementById(modalId) : null;
     if (!modal) return;
 
+    if (activeModal && activeModal !== modal) {
+      activeModal.classList.remove('md-show');
+      activeModal.setAttribute('aria-hidden', 'true');
+    }
+
     activeModal = modal;
     lastTrigger = trigger;
 
@@ -66,8 +87,30 @@ document.addEventListener('DOMContentLoaded', function () {
       modal.setAttribute('aria-labelledby', heading.id);
     }
 
-    const firstFocusable = modal.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
-    firstFocusable?.focus();
+    const focusable = getFocusableElements(modal);
+    (focusable[0] || modal).focus();
+  }
+
+  function trapModalFocus(event) {
+    if (!activeModal || event.key !== 'Tab') return;
+
+    const focusable = getFocusableElements(activeModal);
+    if (focusable.length === 0) {
+      event.preventDefault();
+      activeModal.focus();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
   }
 
   document.querySelectorAll('[data-modal]').forEach(trigger => {
@@ -82,12 +125,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelectorAll('.md-modal').forEach(modal => {
     modal.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('tabindex', '-1');
     modal.querySelectorAll('.md-close').forEach(button => button.addEventListener('click', closeModal));
   });
 
   modalOverlay.addEventListener('click', closeModal);
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') closeModal();
+    if (event.key === 'Escape' && activeModal) {
+      event.preventDefault();
+      closeModal();
+      return;
+    }
+
+    trapModalFocus(event);
   });
 
   function resizeMasonryGrid() {

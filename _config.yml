@@ -7,6 +7,23 @@ lang: en-US
 timezone: America/Detroit
 permalink: /:categories/:year/:month/:day/:title/
 
+social_links:
+  - name: X / Twitter
+    url: "https://twitter.com/Agustealo"
+    icon: twitter-alt.svg
+  - name: Instagram
+    url: "https://instagram.com/Agustealo"
+    icon: instagram.svg
+  - name: GitHub
+    url: "https://github.com/Agustealo"
+    icon: github.svg
+  - name: Behance
+    url: "https://behance.net/agustealo"
+    icon: behance.svg
+  - name: Facebook
+    url: "https://facebook.com/Agustealo"
+    icon: facebook.svg
+
 sass:
   sass_dir: _sass
   style: compressed

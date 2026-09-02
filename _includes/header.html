@@ -1,11 +1,19 @@
-<!-- _includes/header.html -->
-<!-- This section is for Splash Screen -->
-<!-- Homepage Slider -->
-<div id="home-slider" class="fullscreen">
-  <div class="overlay"></div>
-  <canvas id="animation"></canvas>
-  <div class="slider-text">
-    <div id="slidecaption"></div>
+<section
+  id="home-slider"
+  class="fullscreen hero"
+  aria-labelledby="hero-title"
+  style="background-image: url('{{ '/images/slider-images/image01.jpg' | relative_url }}');"
+>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="content-intro">
+      <img class="hero-mark" src="{{ '/images/logo-feat.png' | relative_url }}" alt="" width="320">
+      <h1 id="hero-title">Agustealo Design Studio</h1>
+      <p>Developer <span aria-hidden="true">|</span> Designer Hybrid</p>
+      <div class="hero-actions" aria-label="Explore Agustealo">
+        <a class="button button-mini" href="{{ '/#work' | relative_url }}">View featured work</a>
+        <a class="button button-mini" href="{{ '/#blog' | relative_url }}">Read the blog</a>
+      </div>
+    </div>
   </div>
-</div>
-<!-- End Homepage Slider -->
+</section>

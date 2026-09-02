@@ -1,9 +1,35 @@
 title: Agustealo Design Studio
-description: Web design and development using modern internet technologies.
+description: Web design, development, and creative engineering using modern internet technologies.
+author: Agustealo Johnson
 url: "https://agustealo.github.io"
 baseurl: ""
 lang: en-US
+timezone: America/Detroit
+permalink: /:categories/:year/:month/:day/:title/
+excerpt_separator: "<!-- more -->"
 
-sass:
-  sass_dir: _sass
-  style: compressed
+social_links:
+  - name: X / Twitter
+    url: "https://twitter.com/Agustealo"
+    icon: twitter-alt.svg
+  - name: Instagram
+    url: "https://instagram.com/Agustealo"
+    icon: instagram.svg
+  - name: GitHub
+    url: "https://github.com/Agustealo"
+    icon: github.svg
+  - name: Behance
+    url: "https://behance.net/agustealo"
+    icon: behance.svg
+  - name: Facebook
+    url: "https://facebook.com/Agustealo"
+    icon: facebook.svg
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+exclude:
+  - README
+  - Gemfile
+  - Gemfile.lock

@@ -1,31 +1,21 @@
 ---
 layout: default
 ---
-<div class="post container"> <!-- Added .container for consistency -->
+<article class="post" aria-labelledby="post-title">
   <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
+    <h1 id="post-title" class="post-title">{{ page.title }}</h1>
     <p class="post-meta">
-      {{ page.date | date: "%b %-d, %Y" }}
-      {% if page.author %} • {{ page.author }}{% endif %}
-      {% if page.meta %} • {{ page.meta }}{% endif %}
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+      {% if page.author %}<span aria-hidden="true"> · </span>{{ page.author }}{% endif %}
+      {% if page.meta %}<span aria-hidden="true"> · </span>{{ page.meta }}{% endif %}
     </p>
   </header>
 
-  <article class="post-content">
+  <div class="post-content">
     {{ content }}
-  </article>
+  </div>
 
-  <!-- Disqus Comments -->
-  <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'agustealo'; // required: replace example with your forum shortname
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-  </script>
-</div>
+  <footer class="post-footer">
+    <a href="{{ '/#blog' | relative_url }}">Back to blog</a>
+  </footer>
+</article>

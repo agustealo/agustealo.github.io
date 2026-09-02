@@ -2,38 +2,29 @@
 layout: home
 title: Web design and development using the latest internet technologies.
 ---
-<div class="fp-blog-section py-gap">
-    <!-- Title Page -->
-    <div id="blog" class="row">
-      <div class="col-12">
-        <div class="title-page">
-          <h2 class="title">My Blog</h2>
-        </div>
+<section id="blog" class="fp-blog-section py-gap" aria-labelledby="blog-title">
+  <div class="row">
+    <div class="col-12">
+      <div class="title-page">
+        <h2 id="blog-title" class="title">My Blog</h2>
       </div>
     </div>
-    <!-- End Title  -->
+  </div>
 
-    <div class="row mx-5">
-        {% for post in site.posts %}
-          {% if post.content contains "<!-- more -->" %}
-            <div class="col-sm-1 widget-bottom line-fx col-4 mx-2">
-              <a href="{{ post.url }}" class="blog-link"> <!-- Added class="blog-link" -->
-                <div class="bg-fx">
-                    <h4>{{ post.title }}</h4>
-                    {{ post.content | split:"<!-- more -->" | first }}
-                </div><!-- End Dev-fx -->
-              </a>
-            </div><!-- End Postcard -->
-          {% else %}
-            <div class="widget-bottom">
-              <div class="bg-fx">
-                <div class="inner">
-                  <h4>{{ post.title }}</h4>
-                  {{ post.content | strip_html | truncatewords:200 }}
-                </div>
-              </div><!-- End Bg-fx -->
-            </div><!-- End Postcard -->
-          {% endif %}
-        {% endfor %}
-    </div><!-- End Row -->
-</div><!-- End Blog Section --> 
+  <div class="row mx-5">
+    {% for post in site.posts %}
+      <article class="widget-bottom line-fx col-12 col-md-6 col-lg-4 mx-2">
+        <a href="{{ post.url | relative_url }}" class="blog-link">
+          <div class="bg-fx">
+            <h3>{{ post.title }}</h3>
+            {% if post.content contains "<!-- more -->" %}
+              {{ post.content | split:"<!-- more -->" | first }}
+            {% else %}
+              <p>{{ post.content | strip_html | truncatewords:50 }}</p>
+            {% endif %}
+          </div>
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+</section>

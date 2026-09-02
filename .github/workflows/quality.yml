@@ -1,0 +1,183 @@
+name: Site Quality
+
+on:
+  pull_request:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+
+      - name: Verify locked dependencies
+        run: bundle check
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build --trace
+        env:
+          JEKYLL_ENV: production
+
+      - name: Assert repository and generated surfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          test -f CONTRIBUTING.md
+          test -f .github/pull_request_template.md
+          test -f docs/RELEASE_SMOKE.md
+          grep -q 'Site Quality / build' CONTRIBUTING.md
+          grep -q 'Site Quality' .github/pull_request_template.md
+          grep -q 'Do not call a release healthy solely because GitHub Actions is green' docs/RELEASE_SMOKE.md
+
+          test ! -e config.rb
+          test ! -e twitter
+          test ! -e LICENSE
+          test ! -e LICENSE.md
+          test ! -e images/background.jpg
+          test ! -e images/filter-icon.png
+          test ! -e images/filter-icon_@2x.png
+          test ! -e images/profile
+          test ! -e images/slider-images/image02.jpg
+          test ! -e images/slider-images/image03.jpg
+          test ! -e images/slider-images/image04.jpg
+
+          grep -q 'excerpt_separator: "<!-- more -->"' _config.yml
+          ! grep -q '^MIT\.$' README
+          grep -q 'No repository license file is currently present' README
+          for icon in twitter-alt.svg instagram.svg github.svg behance.svg facebook.svg; do
+            test -f "images/icons/$icon"
+          done
+          test ! -e _includes/home/social.html
+          test ! -e _includes/home/twitter.html
+          test ! -e _includes/home/contact.html
+          grep -q 'include home/social-links.html' _includes/footer.html
+          ! grep -R -q 'include home/social.html' _includes _layouts index.html
+          ! grep -R -q 'include home/twitter.html' _includes _layouts index.html
+          ! grep -R -q 'include home/contact.html' _includes _layouts index.html
+
+          ! grep -q '@for' css/JekyllTwilight-grid.css
+          grep -q '^\.col-12 ' css/JekyllTwilight-grid.css
+          grep -q '^  \.col-md-12 ' css/JekyllTwilight-grid.css
+          grep -q '^  \.col-lg-6 ' css/JekyllTwilight-grid.css
+          grep -q '\.portfolio-trigger' css/JekyllTwilight-portfolio.css
+          grep -q '<button class="bg-fx portfolio-trigger"' _includes/home/our-work.html
+          ! grep -q 'data-modal=.*role="button"' _includes/home/our-work.html
+          ! grep -q 'tabindex="0"' _includes/home/our-work.html
+          ! grep -q 'resizeMasonryGrid' js/JekyllTwilight-portfolio.js
+          ! grep -q 'grid-row-end' js/JekyllTwilight-portfolio.js
+          ! grep -q "event.key === 'Enter'" js/JekyllTwilight-portfolio.js
+
+          grep -q 'position: sticky;' css/JekyllTwilight.css
+          ! grep -q 'sticky-nav\.stuck' css/JekyllTwilight.css
+          ! grep -q 'header \.sticky-nav' css/JekyllTwilight-runtime.css
+          ! grep -q "@import url('JekyllTwilight-grid.css')" css/JekyllTwilight.css
+          grep -q "@import url('JekyllTwilight-grid.css')" css/style.css
+
+          ! grep -q 'susy' Gemfile Gemfile.lock
+          ! grep -q 'jekyll-feed' Gemfile Gemfile.lock _config.yml
+          ! grep -q 'jekyll-archives' Gemfile Gemfile.lock _config.yml
+          ! grep -q 'jekyll-avatar' Gemfile Gemfile.lock _config.yml
+          ! grep -q 'jekyll-include-cache' Gemfile Gemfile.lock _config.yml
+          ! grep -q 'jekyll-redirect-from' Gemfile Gemfile.lock _config.yml
+          grep -q 'jekyll-seo-tag (2.9.0)' Gemfile.lock
+
+          ! grep -q 'disqus.com/count.js' _layouts/post.html
+          ! grep -q 'src="http://' _posts/2014-09-01-things-a-designer-hates-hear.md
+          ! grep -q 'href="http://' _posts/2014-09-02-Unerstanding-CSS-Size-Properties.markdown
+          ! grep -q '\[sociallocker\]' _posts/2014-09-03-self-marketing-for-freelance-designers.md
+          ! grep -q '\[/sociallocker\]' _posts/2014-09-03-self-marketing-for-freelance-designers.md
+          ! grep -q 'style=' _posts/2014-09-03-self-marketing-for-freelance-designers.md
+          ! grep -q 'src="http://' _posts/2014-09-03-self-marketing-for-freelance-designers.md
+          ! grep -q 'Google Reader' _posts/2014-09-03-self-marketing-for-freelance-designers.md
+          grep -q 'Archive note:' _posts/2014-09-03-self-marketing-for-freelance-designers.md
+
+          grep -q '<button id="mobile-nav"' _includes/navigation.html
+          ! grep -q 'id="mobile-nav"[^>]*href=' _includes/navigation.html
+          ! grep -q 'height="auto"' _includes/header.html
+
+          test -f _site/index.html
+          test -f _site/feed.xml
+          test -f _site/sitemap.xml
+          test -f _site/css/style.css
+          test -f _site/css/JekyllTwilight-grid.css
+          test -f _site/css/JekyllTwilight-post.css
+          test -f _site/css/JekyllTwilight-modal.css
+          test -f _site/css/JekyllTwilight-social.css
+          test -f _site/css/JekyllTwilight-runtime.css
+          test -f _site/js/JekyllTwilight.js
+          test -f _site/js/JekyllTwilight-portfolio.js
+          test ! -f _site/js/JekyllTwilight-slider.js
+          test ! -e _site/twitter
+
+          grep -q 'id="home-slider"' _site/index.html
+          grep -q 'id="hero-title"' _site/index.html
+          grep -q 'View featured work' _site/index.html
+          grep -q 'id="work"' _site/index.html
+          grep -q 'id="blog"' _site/index.html
+          grep -q 'id="modal-1"' _site/index.html
+          grep -q 'aria-label="Social media"' _site/index.html
+          grep -q 'rel="noopener noreferrer"' _site/index.html
+          grep -q 'rel="alternate" type="application/rss+xml"' _site/index.html
+          grep -q 'https://agustealo.com/' _site/index.html
+          grep -q '<button id="mobile-nav"' _site/index.html
+          grep -q '<button class="bg-fx portfolio-trigger"' _site/index.html
+          ! grep -q 'data-modal=.*role="button"' _site/index.html
+          ! grep -q '@for' _site/css/JekyllTwilight-grid.css
+          grep -q '^\.col-4 ' _site/css/JekyllTwilight-grid.css
+          ! grep -q 'sticky-nav\.stuck' _site/css/JekyllTwilight.css
+          ! grep -q 'header \.sticky-nav' _site/css/JekyllTwilight-runtime.css
+          grep -q '<rss version="2.0"' _site/feed.xml
+          grep -q '<guid isPermaLink="true">https://agustealo.github.io/' _site/feed.xml
+          ! grep -q '<!-- more -->' _site/feed.xml
+
+          test -f _site/understanding-css-size-properties/index.html
+          test -f _site/things-a-designer-hates-hear/index.html
+          test -f _site/self-marketing-for-freelance-designers/index.html
+          grep -q '<article class="post" aria-labelledby="post-title">' _site/understanding-css-size-properties/index.html
+          grep -q '<time datetime=' _site/understanding-css-size-properties/index.html
+          grep -q 'rel="noopener noreferrer"' _site/understanding-css-size-properties/index.html
+          grep -q 'loading="lazy"' _site/things-a-designer-hates-hear/index.html
+          grep -q 'decoding="async"' _site/things-a-designer-hates-hear/index.html
+          grep -q '<strong>Archive note:</strong>' _site/self-marketing-for-freelance-designers/index.html
+          grep -q 'loading="lazy"' _site/self-marketing-for-freelance-designers/index.html
+          grep -q 'decoding="async"' _site/self-marketing-for-freelance-designers/index.html
+          ! grep -q '\[sociallocker\]' _site/self-marketing-for-freelance-designers/index.html
+          ! grep -q 'http://i[0-9]\.wp\.com' _site/self-marketing-for-freelance-designers/index.html
+
+          ! grep -q '<canvas id="animation"' _site/index.html
+          ! grep -q 'JekyllTwilight-slider.js' _site/index.html
+          ! grep -q 'href="about.html"' _site/index.html
+          ! grep -q 'href="shortcodes.html"' _site/index.html
+          ! grep -q 'http:www.agustealo.com' _site/index.html
+          ! grep -q '<button[^>]*><a ' _site/index.html
+          ! grep -q 'href="http://instagram.com' _site/index.html
+          ! grep -q 'href="http://github.com' _site/index.html
+          ! grep -q 'href="http://behance.net' _site/index.html
+          ! grep -q 'YOUR_CONSUMER_KEY' _site/index.html _site/feed.xml
+
+          grep -q 'focusableSelector' _site/js/JekyllTwilight-portfolio.js
+          grep -q 'trapModalFocus' _site/js/JekyllTwilight-portfolio.js
+          grep -q "removeAttribute('aria-current')" _site/js/JekyllTwilight-portfolio.js
+          ! grep -q 'resizeMasonryGrid' _site/js/JekyllTwilight-portfolio.js
+          ! grep -q 'grid-row-end' _site/js/JekyllTwilight-portfolio.js
+          grep -q 'aria-expanded' _site/js/JekyllTwilight.js
+          grep -q 'Close navigation' _site/js/JekyllTwilight.js
+          grep -q 'prefers-reduced-motion' _site/js/JekyllTwilight.js

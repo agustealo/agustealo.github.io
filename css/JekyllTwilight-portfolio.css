@@ -2,17 +2,13 @@
 /* Global Variables & Defaults        */
 /* ================================== */
 :root {
-  --primary-color: #e9c6eb;       /* Used for .project border, etc. */
-  --secondary-color: #7F82AC;     /* Used for work-nav background */
-  --fx-color: #7F82DF;            /* Default fx color (active category, etc.) */
-  --fx-rgb: 0, 115, 230;          /* Default fx color in RGB (for background fx) */
-  --fx-secondary-color: #666;     /* Fallback color for inactive menu items */
-  --font-family: 'Arial', sans-serif; /* Fallback font */
+  --primary-color: #e9c6eb;
+  --secondary-color: #7F82AC;
+  --fx-color: #7F82DF;
+  --fx-rgb: 0, 115, 230;
+  --fx-secondary-color: #666;
+  --font-family: 'Arial', sans-serif;
 }
-
-/* ================================== */
-/* Portfolio Grid & Item Styles       */
-/* ================================== */
 
 /* Portfolio Nav/Filter */
 .work-nav {
@@ -21,7 +17,7 @@
 
 .project {
   border: 2px solid var(--primary-color);
-  transition: all 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .work-thumb {
@@ -29,11 +25,32 @@
   margin: 10px;
 }
 
+.item-thumbs {
+  position: relative;
+  overflow: hidden;
+  margin: 0.5em;
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
 .item-thumbs:hover {
   transform: scale(1.05);
 }
 
-/* Portfolio Filtering */
+.portfolio-trigger {
+  width: 100%;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.portfolio-trigger:focus-visible {
+  outline: 3px solid var(--fx-color);
+  outline-offset: 3px;
+}
+
 .type-work {
   color: var(--secondary-color);
   font-weight: 300;
@@ -57,8 +74,10 @@
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  display: block;
+  display: inline-block;
   position: relative;
+  padding: 10px 15px;
+  font-weight: normal;
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
@@ -67,148 +86,16 @@
   color: var(--fx-color);
 }
 
-/* Remove extra padding/margins on #thumbs */
-#thumbs {
-  margin: 0;
-  padding: 0;
-}
-
-/* Item Thumbs (Grid Item) */
-.item-thumbs {
-  position: relative;
-  overflow: hidden;
-  margin: 0.5em;
-  cursor: pointer;
-  display: inline-flex;
-  transition: transform 0.3s ease;
-  max-width: 29.3%;
-  box-sizing: border-box; /* Prevent layout issues */
-}
-
-.item-thumbs .hover-wrap .overlay-img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: none;
-  opacity: 0;
-  filter: alpha(opacity=0);
-}
-
-/* ================================== */
-/* Category-Specific Colors           */
-/* ================================== */
-.widget-bottom .bg-fx { 
-  padding: 1em;
-}
-
-.widget-bottom { 
-  --fx-color: #7F82AC; 
-  --fx-rgb: 127, 130, 172; 
-  color: #7F82AC;
-}
-
-.widget-bottom:hover .bg-fx {
-  background-color: #26292E !important;
-}
-
-.widget-bottom h4 { 
-  color: #7F82DF;
-}
-
-.widget-bottom p {  
-  color: #7F82AC;
-}
-
-[data-filter=".wordpress"],
-.line-fx.wordpress,
-.blog-link.wordpress { 
-  --fx-color: #62a2cd; 
-  --fx-rgb: 98, 162, 205; 
-  color: #62a2cd;
-}
-
-.widget-bottom h4 {
-  font-size: 1.5em;
-}
-
-p.widget-description {
-  font-size: 1em;
-}
-
-[data-filter=".snippets"],
-.line-fx.snippets,
-.blog-link.snippets { 
-  --fx-color: #ead78a; 
-  --fx-rgb: 234, 215, 138; 
-  color: #ead78a;
-}
-
-[data-filter=".video"],
-.line-fx.video,
-.blog-link.video { 
-  --fx-color: #c47167; 
-  --fx-rgb: 196, 113, 103; 
-  color: #c47167;
-}
-
-[data-filter=".react"],
-.line-fx.react,
-.blog-link.react { 
-  --fx-color: #4098ac; 
-  --fx-rgb: 64, 152, 172; 
-  color: #4098ac;
-}
-
-[data-filter=".vue"],
-.line-fx.vue,
-.blog-link.vue { 
-  --fx-color: #63bba4; 
-  --fx-rgb: 99, 187, 164; 
-  color: #63bba4;
-}
-
-[data-filter=".angular"],
-.line-fx.angular,
-.blog-link.angular { 
-  --fx-color: #a67bd7; 
-  --fx-rgb: 166, 123, 215; 
-  color: #a67bd7;
-}
-
-/* ================================== */
-/* Menu & Blog Link Hover Effects     */
-/* ================================== */
-.work-nav #filters li a:hover,
-.blog-link:hover {
-  color: var(--fx-color);
-  transition: color 0.3s ease-in-out, font-weight 0.3s ease-in-out;
-}
-
-/* ================================== */
-/* Active Category in Menu            */
-/* ================================== */
-
-/* Base link styles */
-.work-nav #filters li a {
-  position: relative;
-  display: inline-block;
-  padding: 10px 15px;
-  font-weight: normal;
-  transition: color 0.3s ease, transform 0.2s ease;
-}
-
-/* Active state (selected) */
 .work-nav #filters li a.selected {
   font-weight: bold;
   color: var(--fx-color, #0073e6);
   transform: scale(1.1);
 }
 
-/* Animated Right Indicator */
 .work-nav #filters li a.selected::after {
   content: '';
   position: absolute;
-  right: -10px; /* Adjust for better alignment */
+  right: -10px;
   top: 50%;
   width: 8px;
   height: 8px;
@@ -220,23 +107,109 @@ p.widget-description {
 
 .work-nav #filters li a.selected:hover::after {
   transform: translateY(-50%) scale(0);
-  opacity: 0; /* Smoother disappearance */
+  opacity: 0;
 }
 
-/* ================================== */
-/* Background FX for Portfolio Items  */
-/* ================================== */
+#thumbs {
+  margin: 0;
+  padding: 0;
+}
 
-/* Default State: No Background */
+.item-thumbs .hover-wrap .overlay-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: none;
+  opacity: 0;
+}
+
+.widget-bottom .bg-fx {
+  padding: 1em;
+}
+
+.widget-bottom {
+  --fx-color: #7F82AC;
+  --fx-rgb: 127, 130, 172;
+  color: #7F82AC;
+}
+
+.widget-bottom:hover .bg-fx {
+  background-color: #26292E !important;
+}
+
+.widget-bottom h4 {
+  color: #7F82DF;
+  font-size: 1.5em;
+}
+
+.widget-bottom p {
+  color: #7F82AC;
+}
+
+p.widget-description {
+  font-size: 1em;
+}
+
+[data-filter=".wordpress"],
+.line-fx.wordpress,
+.blog-link.wordpress {
+  --fx-color: #62a2cd;
+  --fx-rgb: 98, 162, 205;
+  color: #62a2cd;
+}
+
+[data-filter=".snippets"],
+.line-fx.snippets,
+.blog-link.snippets {
+  --fx-color: #ead78a;
+  --fx-rgb: 234, 215, 138;
+  color: #ead78a;
+}
+
+[data-filter=".video"],
+.line-fx.video,
+.blog-link.video {
+  --fx-color: #c47167;
+  --fx-rgb: 196, 113, 103;
+  color: #c47167;
+}
+
+[data-filter=".react"],
+.line-fx.react,
+.blog-link.react {
+  --fx-color: #4098ac;
+  --fx-rgb: 64, 152, 172;
+  color: #4098ac;
+}
+
+[data-filter=".vue"],
+.line-fx.vue,
+.blog-link.vue {
+  --fx-color: #63bba4;
+  --fx-rgb: 99, 187, 164;
+  color: #63bba4;
+}
+
+[data-filter=".angular"],
+.line-fx.angular,
+.blog-link.angular {
+  --fx-color: #a67bd7;
+  --fx-rgb: 166, 123, 215;
+  color: #a67bd7;
+}
+
+.blog-link:hover {
+  color: var(--fx-color);
+  transition: color 0.3s ease-in-out, font-weight 0.3s ease-in-out;
+}
+
 .bg-fx {
   height: 100%;
   padding: 0.5em;
-  background: rgba(var(--fx-rgb), 0); /* Fallback for older browsers */
   background: transparent;
   transition: background 0.4s ease-in-out, transform 0.3s ease-in-out;
 }
 
-/* On Hover: Background fades in and scales */
 .line-fx:hover .bg-fx,
 .widget-bottom:hover .bg-fx {
   background: rgba(var(--fx-rgb), 0.8);
@@ -250,9 +223,6 @@ p.widget-description {
   transition: background 0.4s ease-in-out;
 }
 
-/* ================================== */
-/* 720° Shooting Stroke Animation FX  */
-/* ================================== */
 .project.line-fx,
 .widget-bottom.line-fx {
   border: 1px solid var(--fx-color);
@@ -262,7 +232,6 @@ p.widget-description {
   padding: 1em;
 }
 
-/* Pseudo-elements for the shooting stroke */
 .line-fx::before,
 .line-fx::after,
 .line-fx span::before,
@@ -274,7 +243,6 @@ p.widget-description {
   opacity: 0;
 }
 
-/* Top Border - Shoots Left to Right */
 .line-fx::before {
   top: 0;
   left: -100%;
@@ -282,7 +250,6 @@ p.widget-description {
   height: 3px;
 }
 
-/* Right Border - Shoots Top to Bottom */
 .line-fx::after {
   right: 0;
   top: -100%;
@@ -290,7 +257,6 @@ p.widget-description {
   height: 100%;
 }
 
-/* Bottom Border - Shoots Right to Left */
 .line-fx span::before {
   bottom: 0;
   right: -100%;
@@ -298,7 +264,6 @@ p.widget-description {
   height: 3px;
 }
 
-/* Left Border - Shoots Bottom to Top */
 .line-fx span::after {
   left: 0;
   bottom: -100%;
@@ -306,7 +271,6 @@ p.widget-description {
   height: 100%;
 }
 
-/* Hover Effect: Activate the 720° Stroke */
 .line-fx:hover::before {
   animation: stroke-top 0.3s linear forwards, stroke-top2 0.3s linear 0.6s forwards, flash-color 0.2s ease-in alternate;
   opacity: 1;
@@ -327,7 +291,6 @@ p.widget-description {
   opacity: 1;
 }
 
-/* Keyframes for 720° Shooting Stroke */
 @keyframes stroke-top {
   0% { left: -100%; opacity: 1; }
   100% { left: 100%; opacity: 1; }
@@ -360,17 +323,15 @@ p.widget-description {
   0% { left: -100%; opacity: 1; }
   100% { left: 100%; opacity: 0; }
 }
-
-/* Flash Effect: Brighten the Stroke */
 @keyframes flash-color {
   0% { background-color: var(--fx-color); }
   100% { background-color: white; }
 }
 
-/* Bounce & Jiggle Effect on Hover */
 .line-fx:hover {
   animation: bounce-jiggle 0.4s ease-in-out;
 }
+
 @keyframes bounce-jiggle {
   0% { transform: scale(1); }
   25% { transform: scale(1.05) translateX(2px); }
@@ -379,17 +340,33 @@ p.widget-description {
   100% { transform: scale(1); }
 }
 
-/* Mobile Optimization */
+@media (prefers-reduced-motion: reduce) {
+  .project,
+  .item-thumbs,
+  .bg-fx,
+  .work-nav #filters li a {
+    transition: none;
+  }
+
+  .line-fx:hover,
+  .line-fx:hover::before,
+  .line-fx:hover::after,
+  .line-fx:hover span::before,
+  .line-fx:hover span::after {
+    animation: none;
+  }
+}
+
 @media (max-width: 768px) {
   .line-fx {
     transform: scale(1);
-    animation: none; /* Disable animations on mobile */
+    animation: none;
   }
 
   .line-fx::before,
   .line-fx::after,
   .line-fx span::before,
   .line-fx span::after {
-    display: none; /* Hide pseudo-elements on mobile */
+    display: none;
   }
 }

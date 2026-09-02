@@ -1,60 +1,139 @@
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('Portfolio JS Loaded');
+  window.JekyllTwilight = window.JekyllTwilight || {};
 
-    // Ensure JekyllTwilight is available in global scope
-    window.JekyllTwilight = window.JekyllTwilight || {};
+  window.JekyllTwilight.filterWorks = function (filterValue = '*') {
+    const projects = document.querySelectorAll('.project');
 
-    // **Portfolio Filter Functionality**
-    window.JekyllTwilight.filterWorks = function (filterValue = '*') {
-        const projects = document.querySelectorAll('.project');
-        projects.forEach(project => {
-            if (filterValue === '*' || project.classList.contains(filterValue.substring(1))) {
-                project.style.display = 'block';
-                setTimeout(() => project.classList.add('show'), 10);
-            } else {
-                project.classList.remove('show');
-                setTimeout(() => project.style.display = 'none', 300);
-            }
-        });
-
-        // Update active filter styling
-        document.querySelectorAll('.project-filter a').forEach(btn => {
-            btn.classList.remove('selected'); // Remove selected class from all
-            if (btn.getAttribute('data-filter') === filterValue) {
-                btn.classList.add('selected'); // Add to the current active filter
-            }
-        });
-    };
-
-    // Select all filter buttons and add event listeners
-    const filters = document.querySelectorAll('.project-filter a');
-    filters.forEach(filter => {
-        filter.addEventListener('click', function (e) {
-            e.preventDefault();
-            const filterValue = this.getAttribute('data-filter');
-            window.JekyllTwilight.filterWorks(filterValue);
-        });
+    projects.forEach(project => {
+      const matches = filterValue === '*' || project.classList.contains(filterValue.substring(1));
+      project.classList.toggle('show', matches);
+      project.hidden = !matches;
     });
 
-    // Ensure filtering runs once on page load
-    window.JekyllTwilight.filterWorks('*');
+    document.querySelectorAll('.project-filter a').forEach(button => {
+      const selected = button.getAttribute('data-filter') === filterValue;
+      button.classList.toggle('selected', selected);
+      if (selected) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+    });
+  };
 
-    /* --- Masonry Grid - Dynamic Column Layout --- */
-    function resizeMasonryGrid() {
-        const grid = document.querySelector('.project-contents');
-        if (!grid) return; // Prevents calling getComputedStyle on null
+  document.querySelectorAll('.project-filter a').forEach(filter => {
+    filter.addEventListener('click', function (event) {
+      event.preventDefault();
+      window.JekyllTwilight.filterWorks(this.getAttribute('data-filter') || '*');
+    });
+  });
 
-        const computedStyle = window.getComputedStyle(grid);
-        const columns = parseInt(computedStyle.getPropertyValue('--columns'), 10) || 3;
-        let columnWidth = grid.offsetWidth / columns;
+  const modalOverlay = document.createElement('div');
+  modalOverlay.className = 'md-overlay';
+  modalOverlay.hidden = true;
+  document.body.appendChild(modalOverlay);
 
-        document.querySelectorAll('.project').forEach(item => {
-            let rowSpan = Math.ceil((item.offsetHeight + 20) / columnWidth);
-            item.style.gridRowEnd = `span ${rowSpan}`;
-        });
+  const focusableSelector = [
+    'a[href]',
+    'button:not([disabled])',
+    'input:not([disabled])',
+    'select:not([disabled])',
+    'textarea:not([disabled])',
+    '[tabindex]:not([tabindex="-1"])'
+  ].join(',');
+
+  let activeModal = null;
+  let lastTrigger = null;
+
+  function getFocusableElements(modal) {
+    return Array.from(modal.querySelectorAll(focusableSelector)).filter(element => {
+      return !element.hasAttribute('hidden') && element.getAttribute('aria-hidden') !== 'true';
+    });
+  }
+
+  function closeModal() {
+    if (!activeModal) return;
+
+    activeModal.classList.remove('md-show');
+    activeModal.setAttribute('aria-hidden', 'true');
+    modalOverlay.hidden = true;
+    document.body.classList.remove('modal-open');
+
+    const trigger = lastTrigger;
+    activeModal = null;
+    lastTrigger = null;
+    trigger?.focus();
+  }
+
+  function openModal(trigger) {
+    const modalId = trigger.getAttribute('data-modal');
+    const modal = modalId ? document.getElementById(modalId) : null;
+    if (!modal) return;
+
+    if (activeModal && activeModal !== modal) {
+      activeModal.classList.remove('md-show');
+      activeModal.setAttribute('aria-hidden', 'true');
     }
 
-    // Resize masonry grid on load and window resize
-    window.addEventListener('load', resizeMasonryGrid);
-    window.addEventListener('resize', resizeMasonryGrid);
+    activeModal = modal;
+    lastTrigger = trigger;
+
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-hidden', 'false');
+    modal.classList.add('md-show');
+    modalOverlay.hidden = false;
+    document.body.classList.add('modal-open');
+
+    const heading = modal.querySelector('h3');
+    if (heading) {
+      if (!heading.id) heading.id = `${modalId}-title`;
+      modal.setAttribute('aria-labelledby', heading.id);
+    }
+
+    const focusable = getFocusableElements(modal);
+    (focusable[0] || modal).focus();
+  }
+
+  function trapModalFocus(event) {
+    if (!activeModal || event.key !== 'Tab') return;
+
+    const focusable = getFocusableElements(activeModal);
+    if (focusable.length === 0) {
+      event.preventDefault();
+      activeModal.focus();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  document.querySelectorAll('[data-modal]').forEach(trigger => {
+    trigger.addEventListener('click', () => openModal(trigger));
+  });
+
+  document.querySelectorAll('.md-modal').forEach(modal => {
+    modal.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('tabindex', '-1');
+    modal.querySelectorAll('.md-close').forEach(button => button.addEventListener('click', closeModal));
+  });
+
+  modalOverlay.addEventListener('click', closeModal);
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && activeModal) {
+      event.preventDefault();
+      closeModal();
+      return;
+    }
+
+    trapModalFocus(event);
+  });
+
+  window.JekyllTwilight.filterWorks('*');
 });

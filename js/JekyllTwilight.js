@@ -3,100 +3,107 @@
 
   function debounce(func, wait, immediate) {
     let timeout;
+
     return function () {
-      const context = this, args = arguments;
+      const context = this;
+      const args = arguments;
       const later = function () {
         timeout = null;
         if (!immediate) func.apply(context, args);
       };
       const callNow = immediate && !timeout;
+
       clearTimeout(timeout);
       timeout = setTimeout(later, wait);
       if (callNow) func.apply(context, args);
     };
   }
 
-  JekyllTwilight.mobileNav = function () {
-    const windowWidth = window.innerWidth;
-    const mobileNavToggle = document.getElementById('mobile-nav');
-    let navigationMobile = document.getElementById('navigation-mobile');
-    const menu = document.getElementById('menu');
+  function prefersReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
 
-    if (windowWidth <= 979) {
-      if (!navigationMobile && menu) {
-        const mobileMenuClone = menu.cloneNode(true);
-        mobileMenuClone.id = 'navigation-mobile';
-        mobileMenuClone.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
-        const mobileList = mobileMenuClone.querySelector('ul');
-        if (mobileList) {
-          mobileList.id = 'menu-nav-mobile';
-        }
-        mobileMenuClone.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-          toggle.addEventListener('click', function (e) {
-            e.preventDefault();
-            this.nextElementSibling?.classList.toggle('show');
-          });
-        });
-        menu.insertAdjacentElement('afterend', mobileMenuClone);
-        navigationMobile = mobileMenuClone;
+  function closeMobileNav(toggle, navigationMobile) {
+    navigationMobile?.classList.remove('open');
+    toggle?.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.setAttribute('aria-label', 'Open navigation');
+  }
+
+  JekyllTwilight.mobileNav = function () {
+    const mobileNavToggle = document.getElementById('mobile-nav');
+    const menu = document.getElementById('menu');
+    let navigationMobile = document.getElementById('navigation-mobile');
+
+    if (!mobileNavToggle || !menu) return;
+
+    if (window.innerWidth <= 979) {
+      if (!navigationMobile) {
+        navigationMobile = menu.cloneNode(true);
+        navigationMobile.id = 'navigation-mobile';
+        navigationMobile.setAttribute('aria-label', 'Mobile navigation');
+        navigationMobile.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'));
+
+        const mobileList = navigationMobile.querySelector('ul');
+        if (mobileList) mobileList.id = 'menu-nav-mobile';
+
+        menu.insertAdjacentElement('afterend', navigationMobile);
       }
-    } else if (navigationMobile) {
-      navigationMobile.remove();
-      mobileNavToggle?.classList.remove('open');
-      mobileNavToggle?.setAttribute('aria-expanded', 'false');
+
+      mobileNavToggle.setAttribute('aria-expanded', navigationMobile.classList.contains('open') ? 'true' : 'false');
+      return;
     }
+
+    navigationMobile?.remove();
+    closeMobileNav(mobileNavToggle, null);
   };
 
   JekyllTwilight.listenerMenu = function () {
     const mobileNavToggle = document.getElementById('mobile-nav');
-    const navigationMobile = document.getElementById('navigation-mobile');
-    if (mobileNavToggle && navigationMobile) {
-      mobileNavToggle.addEventListener('click', function (e) {
-        e.preventDefault();
-        const isOpen = this.classList.toggle('open');
-        navigationMobile.classList.toggle('open', isOpen);
-        this.setAttribute('aria-expanded', String(isOpen));
-      });
+    if (!mobileNavToggle) return;
 
-      navigationMobile.querySelectorAll('#menu-nav-mobile a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileNavToggle.classList.remove('open');
-          navigationMobile.classList.remove('open');
-          mobileNavToggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-    }
-  };
+    mobileNavToggle.addEventListener('click', function () {
+      const navigationMobile = document.getElementById('navigation-mobile');
+      if (!navigationMobile) return;
 
-  JekyllTwilight.nav = function () {
-    const stickyNav = document.querySelector('.sticky-nav');
-    if (stickyNav && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => entry.target.classList.toggle('is-sticky', !entry.isIntersecting));
-      }, { threshold: 0 });
-      observer.observe(stickyNav);
-    }
+      const isOpen = !navigationMobile.classList.contains('open');
+      navigationMobile.classList.toggle('open', isOpen);
+      this.classList.toggle('open', isOpen);
+      this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      this.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+    });
+
+    document.addEventListener('click', function (event) {
+      const navigationMobile = document.getElementById('navigation-mobile');
+      if (!navigationMobile || !navigationMobile.contains(event.target)) return;
+
+      if (event.target.closest('a')) {
+        closeMobileNav(mobileNavToggle, navigationMobile);
+      }
+    });
   };
 
   JekyllTwilight.scrollToTop = function () {
     const arrow = document.getElementById('back-to-top');
     if (!arrow) return;
 
-    arrow.addEventListener('click', function (e) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    arrow.addEventListener('click', function (event) {
+      event.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+      });
     });
 
-    window.addEventListener('scroll', debounce(() => {
-      arrow.style.display = window.scrollY > 1000 ? 'block' : 'none';
-    }, 100));
+    const updateVisibility = debounce(function () {
+      arrow.hidden = window.scrollY <= 1000;
+    }, 100);
+
+    arrow.hidden = window.scrollY <= 1000;
+    window.addEventListener('scroll', updateVisibility, { passive: true });
   };
 
   document.addEventListener('DOMContentLoaded', function () {
-    if (typeof JekyllTwilight.slider === 'function') {
-      JekyllTwilight.slider();
-    }
-    JekyllTwilight.nav();
     JekyllTwilight.mobileNav();
     JekyllTwilight.listenerMenu();
     JekyllTwilight.scrollToTop();

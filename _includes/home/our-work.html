@@ -1,25 +1,24 @@
-
-  <div id="latest" class="container-wider mv-5">
+<section id="work" class="container-fluid py-gap" aria-labelledby="featured-dev-title">
+  <div class="container-wider mv-5">
     {% include home/widget.html %}
   </div>
-  <div class="container-fluid py-gap">
-    
-    <!-- Title Page -->
-    <div class="row">
-      <div class="col-12">
-        <div class="title-page">
-          <h2 class="title">Featured Dev's</h2>
-          <h3 class="title-description">Interested In My Graphic Design Projects? Visit My Design Blog <a href="https://agustealo.com/" rel="noopener">AGUSTEALO.com</a>.</h3>
-        </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="title-page">
+        <h2 id="featured-dev-title" class="title">Featured Dev</h2>
+        <h3 class="title-description">
+          Interested in my graphic design projects?
+          <a href="https://agustealo.com/" rel="noopener">Visit Agustealo Design Studio</a>.
+        </h3>
       </div>
     </div>
+  </div>
 
-    <!-- Menu and Portfolio Grid -->
-    <div class="container">
-      <div class="row">
-      <!-- Filter Menu -->
+  <div class="container">
+    <div class="row">
       <div class="menu-area">
-        <nav id="options" class="work-nav" aria-label="Project filters">
+        <nav id="options" class="work-nav" aria-label="Portfolio filters">
           <ul id="filters" class="project-filter">
             <li class="type-work">Type of Work</li>
             <li><a href="#filter" data-filter="*" class="selected">All Projects</a></li>
@@ -30,58 +29,40 @@
         </nav>
       </div>
 
-      <!-- Portfolio Grid -->
       <div class="col-9 col-md-12">
         <ul class="project-contents row">
-          <!-- Item Project and Filter Name -->
           <li class="project line-fx portfolio-item item-thumbs work-thumb wordpress col-4 col-md-12 col-lg-6">
-            <div class="bg-fx" data-modal="modal-1">
-              <img src="{{ '/images/work/thumbs/image-01.png' | relative_url }}" alt="WordPress project">
-            </div>
+            <button class="bg-fx portfolio-trigger" type="button" data-modal="modal-1" aria-label="Open WordPress project 1">
+              <img src="{{ '/images/work/thumbs/image-01.png' | relative_url }}" alt="WordPress project preview" loading="lazy">
+            </button>
           </li>
-          <!-- End Item Project -->
-
-          <!-- Item Project and Filter Name -->
           <li class="project line-fx portfolio-item item-thumbs work-thumb wordpress col-4 col-md-12 col-lg-6">
-            <div class="bg-fx" data-modal="modal-2">
-              <img src="{{ '/images/work/thumbs/image-02.png' | relative_url }}" alt="WordPress project">
-            </div>
+            <button class="bg-fx portfolio-trigger" type="button" data-modal="modal-2" aria-label="Open WordPress project 2">
+              <img src="{{ '/images/work/thumbs/image-02.png' | relative_url }}" alt="WordPress project preview" loading="lazy">
+            </button>
           </li>
-          <!-- End Item Project -->
-
-          <!-- Item Project and Filter Name -->
           <li class="project line-fx portfolio-item item-thumbs work-thumb wordpress col-4 col-md-12 col-lg-6">
-            <div class="bg-fx" data-modal="modal-3">
-              <img src="{{ '/images/work/thumbs/image-03.png' | relative_url }}" alt="WordPress project">
-            </div>
+            <button class="bg-fx portfolio-trigger" type="button" data-modal="modal-3" aria-label="Open WordPress project 3">
+              <img src="{{ '/images/work/thumbs/image-03.png' | relative_url }}" alt="WordPress project preview" loading="lazy">
+            </button>
           </li>
-          <!-- End Item Project -->
-
-          <!-- Item Project and Filter Name -->
           <li class="project line-fx portfolio-item item-thumbs work-thumb video col-4 col-md-12 col-lg-6">
-            <div class="bg-fx" data-modal="modal-4">
-              <img src="{{ '/images/work/thumbs/image-04.png' | relative_url }}" alt="Video project">
-            </div>
+            <button class="bg-fx portfolio-trigger" type="button" data-modal="modal-4" aria-label="Open video project">
+              <img src="{{ '/images/work/thumbs/image-04.png' | relative_url }}" alt="Video project preview" loading="lazy">
+            </button>
           </li>
-          <!-- End Item Project -->
-
-          <!-- Item Project and Filter Name -->
           <li class="project line-fx portfolio-item item-thumbs work-thumb snippets col-4 col-md-12 col-lg-6">
-            <div class="bg-fx" data-modal="modal-5">
-              <img src="{{ '/images/work/thumbs/image-05.png' | relative_url }}" alt="Code snippets project">
-            </div>
+            <button class="bg-fx portfolio-trigger" type="button" data-modal="modal-5" aria-label="Open code snippets project">
+              <img src="{{ '/images/work/thumbs/image-05.png' | relative_url }}" alt="Code snippets project preview" loading="lazy">
+            </button>
           </li>
-          <!-- End Item Project -->
-
-          <!-- Item Project and Filter Name -->
           <li class="project line-fx portfolio-item item-thumbs work-thumb wordpress col-4 col-md-12 col-lg-6">
-            <div class="bg-fx" data-modal="modal-6">
-              <img src="{{ '/images/work/thumbs/image-06.png' | relative_url }}" alt="WordPress project">
-            </div>
+            <button class="bg-fx portfolio-trigger" type="button" data-modal="modal-6" aria-label="Open WordPress project 4">
+              <img src="{{ '/images/work/thumbs/image-06.png' | relative_url }}" alt="WordPress project preview" loading="lazy">
+            </button>
           </li>
-          <!-- End Item Project -->
         </ul>
       </div>
     </div>
-    </div>
   </div>
+</section>

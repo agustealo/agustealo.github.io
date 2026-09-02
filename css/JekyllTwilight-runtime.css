@@ -4,6 +4,13 @@ header .sticky-nav {
   top: 0;
 }
 
+#mobile-nav {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 #back-to-top {
   display: block;
 }

@@ -67,9 +67,11 @@ jobs:
           done
           test ! -e _includes/home/social.html
           test ! -e _includes/home/twitter.html
+          test ! -e _includes/home/contact.html
           grep -q 'include home/social-links.html' _includes/footer.html
           ! grep -R -q 'include home/social.html' _includes _layouts index.html
           ! grep -R -q 'include home/twitter.html' _includes _layouts index.html
+          ! grep -R -q 'include home/contact.html' _includes _layouts index.html
 
           ! grep -q '@for' css/JekyllTwilight-grid.css
           grep -q '^\.col-12 ' css/JekyllTwilight-grid.css

@@ -1,24 +1,29 @@
 document.addEventListener('DOMContentLoaded', function () {
   window.JekyllTwilight = window.JekyllTwilight || {};
 
+  const projects = Array.from(document.querySelectorAll('.portfolio-item'));
+  const filters = Array.from(document.querySelectorAll('.project-filter a[data-filter]'));
+
   window.JekyllTwilight.filterWorks = function (filterValue = '*') {
-    const projects = document.querySelectorAll('.project');
+    const normalizedFilter = filters.some(filter => filter.getAttribute('data-filter') === filterValue)
+      ? filterValue
+      : '*';
 
     projects.forEach(project => {
-      const matches = filterValue === '*' || project.classList.contains(filterValue.substring(1));
+      const matches = normalizedFilter === '*' || project.matches(normalizedFilter);
       project.classList.toggle('show', matches);
       project.hidden = !matches;
     });
 
-    document.querySelectorAll('.project-filter a').forEach(button => {
-      const selected = button.getAttribute('data-filter') === filterValue;
-      button.classList.toggle('selected', selected);
-      if (selected) button.setAttribute('aria-current', 'true');
-      else button.removeAttribute('aria-current');
+    filters.forEach(filter => {
+      const selected = filter.getAttribute('data-filter') === normalizedFilter;
+      filter.classList.toggle('selected', selected);
+      if (selected) filter.setAttribute('aria-current', 'true');
+      else filter.removeAttribute('aria-current');
     });
   };
 
-  document.querySelectorAll('.project-filter a').forEach(filter => {
+  filters.forEach(filter => {
     filter.addEventListener('click', function (event) {
       event.preventDefault();
       window.JekyllTwilight.filterWorks(this.getAttribute('data-filter') || '*');

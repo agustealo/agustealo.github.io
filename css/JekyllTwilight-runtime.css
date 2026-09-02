@@ -1,9 +1,4 @@
 /* Runtime state corrections */
-header .sticky-nav {
-  position: sticky;
-  top: 0;
-}
-
 #mobile-nav {
   padding: 0;
   border: 0;

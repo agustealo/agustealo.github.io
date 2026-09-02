@@ -1,19 +1,14 @@
 {% include head.html %}
-<!-- Header -->
-<div class="container-fluid container-no-padding"> <!-- Updated to use .container -->
-    {% include header.html %}
-    {% include navigation.html %}
-    <!-- End Header -->
+<div class="container-fluid container-no-padding">
+  {% include header.html %}
+  {% include navigation.html %}
 
-    <!-- Our Work Section -->
-    {% include home/our-work.html %}
-    <!-- End Our Work Section -->
+  {% include home/our-work.html %}
+  {% include home/dev-modal-content.html %}
 
-    <!-- About Section -->
+  <main id="main-content">
     {{ content }}
-    <!-- End About Section -->
+  </main>
 </div>
 
-<!-- Footer -->
 {% include footer.html %}
-<!-- End Footer -->

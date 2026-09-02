@@ -39,9 +39,14 @@ jobs:
           test -f _site/css/style.css
           test -f _site/css/JekyllTwilight-modal.css
           test -f _site/css/JekyllTwilight-social.css
+          test -f _site/css/JekyllTwilight-runtime.css
           test -f _site/js/JekyllTwilight.js
           test -f _site/js/JekyllTwilight-portfolio.js
+          test ! -f _site/js/JekyllTwilight-slider.js
 
+          grep -q 'id="home-slider"' _site/index.html
+          grep -q 'id="hero-title"' _site/index.html
+          grep -q 'View featured work' _site/index.html
           grep -q 'id="work"' _site/index.html
           grep -q 'id="blog"' _site/index.html
           grep -q 'id="modal-1"' _site/index.html
@@ -49,6 +54,8 @@ jobs:
           grep -q 'rel="noopener noreferrer"' _site/index.html
           grep -q 'https://agustealo.com/' _site/index.html
 
+          ! grep -q '<canvas id="animation"' _site/index.html
+          ! grep -q 'JekyllTwilight-slider.js' _site/index.html
           ! grep -q 'href="about.html"' _site/index.html
           ! grep -q 'href="shortcodes.html"' _site/index.html
           ! grep -q 'http:www.agustealo.com' _site/index.html
@@ -59,3 +66,5 @@ jobs:
 
           grep -q 'focusableSelector' _site/js/JekyllTwilight-portfolio.js
           grep -q 'trapModalFocus' _site/js/JekyllTwilight-portfolio.js
+          grep -q 'aria-expanded' _site/js/JekyllTwilight.js
+          grep -q 'prefers-reduced-motion' _site/js/JekyllTwilight.js
